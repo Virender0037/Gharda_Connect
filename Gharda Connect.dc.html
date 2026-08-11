@@ -80,7 +80,7 @@
           <div style="display:{{ n.menuDisplay }};position:absolute;top:42px;left:0;min-width:300px;background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:0 24px 56px -20px rgba(13,18,32,0.34),0 2px 6px -2px rgba(13,18,32,0.08);padding:8px;flex-direction:column;gap:2px;animation:gpop 170ms cubic-bezier(0.22,1,0.36,1);z-index:70">
             <sc-for list="{{ n.items }}" as="m" hint-placeholder-count="4">
               <button onClick="{{ m.click }}" style="display:flex;align-items:center;gap:11px;width:100%;padding:9px 10px;border:0;border-radius:11px;background:{{ m.bg }};color:var(--text-primary);font-size:13px;font-weight:500;text-align:left;cursor:pointer" style-hover="background:var(--hover)">
-                <span style="width:28px;height:28px;flex:0 0 auto;border-radius:9px;background:{{ m.chipBg }};color:{{ m.chipFg }};display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:9.5px;font-weight:600;box-shadow:inset 0 0 0 1px rgba(13,18,32,0.05)">{{ m.mono }}</span>
+                <span style="position:relative;width:28px;height:28px;flex:0 0 auto;border-radius:9px;background:{{ m.chipBg }};color:{{ m.chipFg }};display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:9.5px;font-weight:600;box-shadow:inset 0 0 0 1px rgba(13,18,32,0.05);overflow:hidden"><span>{{ m.mono }}</span><img src="{{ m.logo }}" alt="{{ m.mono }}" onError="{{ m.logoFb }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:4px;box-sizing:border-box;display:{{ m.logoDisplay }}" /></span>
                 <span style="min-width:0;flex:1 1 auto">
                   <span style="display:block;font-weight:600">{{ m.label }}</span>
                   <span style="display:block;font-size:11.5px;font-weight:400;color:var(--text-muted)">{{ m.sub }}</span>
@@ -131,7 +131,7 @@
 
       <div style="position:relative;display:flex">
         <button onClick="{{ toggleRole }}" style="display:flex;align-items:center;gap:9px;height:36px;padding:0 9px 0 4px;border:1px solid var(--border);border-radius:10px;background:var(--surface);cursor:pointer;box-shadow:0 1px 2px rgba(13,18,32,0.04)" style-hover="border-color:#C3CEFA">
-          <span style="width:28px;height:28px;border-radius:8px;background:linear-gradient(140deg,var(--accent),#152A63);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11px;font-weight:600">RK</span>
+          <span style="width:28px;height:28px;flex:0 0 auto;border-radius:8px;background:linear-gradient(140deg,var(--accent),#152A63);overflow:hidden;display:block"><img src="{{ mePicSrc }}" alt="RK" onError="{{ mePicFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
           <span style="display:{{ wideOnly }};flex-direction:column;line-height:1.1;text-align:left">
             <span style="display:block;font-size:12.5px;font-weight:600;color:var(--text-primary)">Rohan Kulkarni</span>
             <span style="display:block;font-size:10.5px;color:var(--text-muted)">{{ role }}</span>
@@ -182,7 +182,7 @@
             <div style="display:{{ n.childrenDisplay }};flex-direction:column;gap:1px;margin:2px 0 6px 22px;padding-left:11px;border-left:1px solid var(--divider)">
               <sc-for list="{{ n.children }}" as="c" hint-placeholder-count="6">
                 <button onClick="{{ c.click }}" style="display:flex;align-items:center;gap:10px;width:100%;text-align:left;height:34px;padding:0 10px;border:0;border-radius:9px;background:{{ c.bg }};color:{{ c.fg }};font-size:12.5px;font-weight:500;cursor:pointer" style-hover="background:var(--hover);color:var(--text-primary)">
-                  <span style="width:22px;height:22px;flex:0 0 auto;border-radius:7px;background:var(--hover);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:8.5px;font-weight:600">{{ c.mono }}</span>
+                  <span style="position:relative;width:22px;height:22px;flex:0 0 auto;border-radius:7px;background:var(--hover);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:8.5px;font-weight:600;overflow:hidden"><span>{{ c.mono }}</span><img src="{{ c.logo }}" alt="{{ c.mono }}" onError="{{ c.logoFb }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:3px;box-sizing:border-box;display:{{ c.logoDisplay }}" /></span>
                   <span style="flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</span>
                 </button>
               </sc-for>
@@ -229,7 +229,7 @@
             <h2 style="margin:0 0 11px;font-family:Geist,sans-serif;font-size:{{ homeLeaderTitleSize }};font-weight:600;letter-spacing:-0.03em;line-height:1.16;max-width:26ch">{{ hero.title }}</h2>
             <p style="margin:0 0 18px;font-size:13.5px;line-height:1.58;color:#AEB8CE;max-width:52ch">{{ hero.blurb }}</p>
             <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;padding-top:14px;border-top:1px solid rgba(255,255,255,0.1)">
-              <span style="width:34px;height:34px;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12px;font-weight:600">{{ hero.initials }}</span>
+              <span style="width:34px;height:34px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);overflow:hidden;display:block"><img src="{{ hero.picSrc }}" alt="{{ hero.initials }}" onError="{{ hero.picFb }}" style="display:block;width:100%;height:100%;object-fit:{{ hero.picFit }};padding:{{ hero.picPad }};filter:{{ hero.picFilter }};box-sizing:border-box" /></span>
               <span style="line-height:1.3">
                 <span style="display:block;font-size:12.5px;font-weight:600">{{ hero.author }}</span>
                 <span style="display:block;font-size:11px;color:#95A0BA">{{ hero.role }} · {{ hero.mins }}</span>
@@ -306,7 +306,7 @@
                 <sc-for list="{{ feedPreview }}" as="p" hint-placeholder-count="2">
                   <article style="flex:0 0 {{ feedCardWidth }};scroll-snap-align:start;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 1px 2px rgba(13,18,32,0.05)">
                     <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-                      <span style="width:32px;height:32px;border-radius:99px;background:{{ p.avBg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11px;font-weight:600">{{ p.initials }}</span>
+                      <span style="width:32px;height:32px;border-radius:99px;background:{{ p.avBg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11px;font-weight:600;overflow:hidden"><img src="{{ p.picSrc }}" alt="{{ p.initials }}" onError="{{ p.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                       <span style="min-width:0;line-height:1.25">
                         <span style="display:block;font-size:13px;font-weight:600">{{ p.author }}</span>
                         <span style="display:block;font-size:11.5px;color:var(--text-muted)">{{ p.time }}</span>
@@ -390,7 +390,7 @@
               <div style="display:flex;flex-direction:column;gap:14px">
                 <sc-for list="{{ celebrations }}" as="c" hint-placeholder-count="3">
                   <div style="display:flex;align-items:center;gap:11px">
-                    <span style="width:36px;height:36px;flex:0 0 auto;border-radius:99px;background:{{ c.bg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11.5px;font-weight:600;box-shadow:0 0 0 3px {{ c.ring }}">{{ c.ini }}</span>
+                    <span style="width:36px;height:36px;flex:0 0 auto;border-radius:99px;background:{{ c.bg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11.5px;font-weight:600;box-shadow:0 0 0 3px {{ c.ring }};overflow:hidden"><img src="{{ c.picSrc }}" alt="{{ c.ini }}" onError="{{ c.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                     <span style="min-width:0;line-height:1.3">
                       <span style="display:block;font-size:13px;font-weight:600">{{ c.name }}</span>
                       <span style="display:block;font-size:11.5px;color:var(--text-muted)">{{ c.note }}</span>
@@ -445,7 +445,7 @@
                 <span style="position:absolute;inset:0 0 auto 0;height:92px;background:{{ h.wash }};pointer-events:none"></span>
                 <span style="position:absolute;top:14px;right:18px;font-family:Geist,sans-serif;font-size:40px;font-weight:600;line-height:1;color:{{ h.panel }};pointer-events:none;user-select:none" aria-hidden="true">{{ h.mono }}</span>
                 <div style="position:relative;padding:16px 18px 18px">
-                  <span style="display:flex;width:36px;height:36px;border-radius:11px;background:{{ h.accent }};color:#fff;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12px;font-weight:600;margin-bottom:11px;box-shadow:0 6px 14px -8px rgba(13,18,32,0.5)">{{ h.mono }}</span>
+                  <span style="position:relative;display:flex;width:36px;height:36px;border-radius:11px;background:{{ h.accent }};color:#fff;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12px;font-weight:600;margin-bottom:11px;box-shadow:0 6px 14px -8px rgba(13,18,32,0.5);overflow:hidden"><span>{{ h.mono }}</span><img src="{{ h.logo }}" alt="{{ h.mono }}" onError="{{ h.logoFb }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:6px;box-sizing:border-box;display:{{ h.logoDisplay }}" /></span>
                   <h3 style="margin:0 0 3px;font-family:Geist,sans-serif;font-size:15px;font-weight:600;letter-spacing:-0.02em">{{ h.name }}</h3>
                   <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">{{ h.owner }} · {{ h.updated }}</div>
                   <p style="margin:0 0 13px;font-size:12.5px;line-height:1.5;color:var(--text-secondary)">{{ h.tagline }}</p>
@@ -461,6 +461,41 @@
                   </div>
                 </div>
               </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="border-top:1px solid var(--border)">
+        <div style="max-width:1500px;margin:0 auto;padding:{{ homeLinksPad }}">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:20px">
+            <div>
+              <div style="font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:7px">Everyday requests</div>
+              <h2 style="margin:0;font-family:Geist,sans-serif;font-size:{{ bandTitleSize }};font-weight:600;letter-spacing:-0.03em">Quick links</h2>
+              <p style="margin:6px 0 0;font-size:13.5px;line-height:1.55;color:var(--text-secondary);max-width:74ch">Raise a request or find workplace information without hunting for the right email address.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:30px">
+            <sc-for list="{{ linkGroups }}" as="g" hint-placeholder-count="3">
+              <section>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+                  <span style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:{{ g.labelFg }}">{{ g.label }}</span>
+                  <span style="flex:1;height:1px;background:var(--border)"></span>
+                </div>
+                <div style="display:grid;grid-template-columns:{{ triCols }};gap:12px">
+                  <sc-for list="{{ g.items }}" as="l" hint-placeholder-count="3">
+                    <button onClick="{{ l.click }}" style="display:flex;align-items:flex-start;gap:13px;text-align:left;padding:18px;border:1px solid {{ l.bd }};border-radius:16px;background:{{ l.bg }};cursor:pointer;box-shadow:0 1px 2px rgba(13,18,32,0.05)" style-hover="border-color:#C3CEFA;box-shadow:0 14px 32px -20px rgba(13,18,32,0.3)">
+                      <span style="width:40px;height:40px;flex:0 0 auto;border-radius:12px;background:{{ l.chipBg }};color:{{ l.chipFg }};display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(13,18,32,0.04)">
+                        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="{{ l.icon }}" /></svg>
+                      </span>
+                      <span style="min-width:0;flex:1 1 auto">
+                        <span style="display:block;font-family:Geist,sans-serif;font-size:14.5px;font-weight:600;letter-spacing:-0.016em;color:var(--text-primary);margin-bottom:5px">{{ l.title }}</span>
+                        <span style="display:block;font-size:12.5px;line-height:1.55;color:var(--text-secondary)">{{ l.desc }}</span>
+                      </span>
+                    </button>
+                  </sc-for>
+                </div>
+              </section>
             </sc-for>
           </div>
         </div>
@@ -484,8 +519,9 @@
             </div>
 
             <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:26px">
-              <span style="width:52px;height:52px;flex:0 0 auto;border-radius:16px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);box-shadow:0 12px 24px -14px rgba(0,0,0,0.7)">
+              <span style="position:relative;width:52px;height:52px;flex:0 0 auto;border-radius:16px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);box-shadow:0 12px 24px -14px rgba(0,0,0,0.7);overflow:hidden">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="{{ hub.icon }}" /></svg>
+                <img src="{{ hub.logo }}" alt="{{ hub.mono }}" onError="{{ hub.logoFb }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:11px;box-sizing:border-box;display:{{ hub.logoDisplay }}" />
               </span>
               <div style="min-width:0">
                 <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
@@ -545,7 +581,7 @@
 
               <div style="display:{{ heroAsideDisplay }};flex-direction:column;border-radius:20px;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.16);backdrop-filter:blur(16px);box-shadow:0 36px 72px -32px rgba(0,0,0,0.7);overflow:hidden">
                 <div style="display:flex;align-items:center;gap:11px;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,0.12)">
-                  <span style="width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,0.16);display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11px;font-weight:600">RK</span>
+                  <span style="width:32px;height:32px;flex:0 0 auto;border-radius:10px;background:rgba(255,255,255,0.16);overflow:hidden;display:block"><img src="{{ mePicSrc }}" alt="RK" onError="{{ mePicFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                   <span style="min-width:0;line-height:1.2">
                     <span style="display:block;font-size:12.5px;font-weight:600">{{ hub.personalTitle }}</span>
                     <span style="display:block;font-size:11px;color:rgba(255,255,255,0.62)">Rohan Kulkarni · GCL-40218</span>
@@ -774,7 +810,7 @@
                   <div style="display:flex;flex-direction:column;gap:3px">
                     <sc-for list="{{ hub.topTeam }}" as="t" hint-placeholder-count="3">
                       <button onClick="{{ t.click }}" style="display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:9px 8px;border:0;border-radius:12px;background:transparent;cursor:pointer" style-hover="background:var(--background)">
-                        <span style="width:32px;height:32px;flex:0 0 auto;border-radius:11px;background:{{ t.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11px;font-weight:600">{{ t.ini }}</span>
+                        <span style="width:32px;height:32px;flex:0 0 auto;border-radius:11px;background:{{ t.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11px;font-weight:600;overflow:hidden"><img src="{{ t.picSrc }}" alt="{{ t.ini }}" onError="{{ t.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                         <span style="min-width:0;flex:1 1 auto;line-height:1.3">
                           <span style="display:block;font-size:13px;font-weight:600">{{ t.name }}</span>
                           <span style="display:block;font-size:11.5px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.role }}</span>
@@ -981,7 +1017,7 @@
                   <div style="position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:0 1px 2px rgba(13,18,32,0.05)" style-hover="border-color:#C3CEFA;box-shadow:0 16px 34px -22px rgba(13,18,32,0.32)">
                     <span style="position:absolute;inset:0 0 auto 0;height:64px;background:linear-gradient(180deg,{{ hub.panel }},rgba(255,255,255,0))"></span>
                     <div style="position:relative;padding:20px">
-                      <span style="display:flex;width:46px;height:46px;border-radius:14px;background:{{ t.av }};color:#fff;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:14px;font-weight:600;margin-bottom:14px;box-shadow:0 8px 18px -10px rgba(13,18,32,0.5)">{{ t.ini }}</span>
+                      <span style="display:flex;width:46px;height:46px;border-radius:14px;background:{{ t.av }};color:#fff;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:14px;font-weight:600;margin-bottom:14px;box-shadow:0 8px 18px -10px rgba(13,18,32,0.5);overflow:hidden"><img src="{{ t.picSrc }}" alt="{{ t.ini }}" onError="{{ t.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                       <div style="font-family:Geist,sans-serif;font-size:15px;font-weight:600;letter-spacing:-0.018em;margin-bottom:3px">{{ t.name }}</div>
                       <div style="font-size:12.5px;color:var(--text-secondary);margin-bottom:2px">{{ t.role }}</div>
                       <div style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--text-muted);margin-bottom:15px">
@@ -1102,7 +1138,7 @@
     <sc-if value="{{ isAnn }}" hint-placeholder-val="{{ false }}">
       <div>
         <div style="background:var(--surface);border-bottom:1px solid var(--border)">
-          <div style="max-width:1400px;margin:0 auto;padding:26px {{ gutter }} 0">
+          <div style="max-width:1500px;margin:0 auto;padding:26px {{ gutter }} 0">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap">
               <div>
                 <div style="display:flex;align-items:center;gap:10px;margin-bottom:9px">
@@ -1169,7 +1205,7 @@
           </div>
         </div>
 
-        <div style="max-width:1400px;margin:0 auto;padding:{{ sectionPad }} {{ gutter }}">
+        <div style="max-width:1500px;margin:0 auto;padding:{{ sectionPad }} {{ gutter }}">
           <sc-if value="{{ ann.hasCritical }}" hint-placeholder-val="{{ true }}">
             <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px">
               <sc-for list="{{ ann.critical }}" as="a" hint-placeholder-count="1">
@@ -1290,7 +1326,7 @@
                           </span>
                         </div>
                         <div style="display:{{ a.leaderDisplay }};align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid {{ a.cardBd }};background:{{ a.headBg }}">
-                          <span style="width:40px;height:40px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12.5px;font-weight:600">KG</span>
+                          <span style="width:40px;height:40px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);overflow:hidden;display:block"><img src="{{ a.picSrc }}" alt="{{ a.author }}" onError="{{ a.picFb }}" style="display:block;width:100%;height:100%;object-fit:{{ a.picFit }};padding:{{ a.picPad }};filter:{{ a.picFilter }};box-sizing:border-box" /></span>
                           <span style="min-width:0">
                             <span style="display:block;font-size:13px;font-weight:600">{{ a.author }}</span>
                             <span style="display:block;font-size:11.5px;color:var(--text-muted)">{{ a.authorRole }}</span>
@@ -1415,7 +1451,7 @@
                   <div style="display:flex;flex-direction:column;gap:3px">
                     <sc-for list="{{ ann.sources }}" as="d" hint-placeholder-count="4">
                       <div style="display:flex;align-items:center;gap:11px;padding:9px 8px;border-radius:11px" style-hover="background:var(--background)">
-                        <span style="width:26px;height:26px;flex:0 0 auto;border-radius:8px;background:{{ d.chipBg }};color:{{ d.chipFg }};display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:9.5px;font-weight:600">{{ d.mono }}</span>
+                        <span style="position:relative;width:26px;height:26px;flex:0 0 auto;border-radius:8px;background:{{ d.chipBg }};color:{{ d.chipFg }};display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:9.5px;font-weight:600;overflow:hidden"><span>{{ d.mono }}</span><img src="{{ d.logo }}" alt="{{ d.mono }}" onError="{{ d.logoFb }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:3px;box-sizing:border-box;background:{{ d.chipBg }};display:{{ d.logoDisplay }}" /></span>
                         <span style="flex:1 1 auto;min-width:0;font-size:12.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ d.name }}</span>
                         <button onClick="{{ d.toggle }}" style="flex:0 0 auto;height:26px;padding:0 10px;border:1px solid {{ d.bd }};border-radius:99px;background:{{ d.bg }};color:{{ d.fg }};font-size:11px;font-weight:600;cursor:pointer" style-hover="border-color:#C3CEFA">{{ d.label }}</button>
                       </div>
@@ -1492,7 +1528,7 @@
                   <h2 style="margin:0;font-family:Geist,sans-serif;font-size:23px;font-weight:600;letter-spacing:-0.03em;line-height:1.22">{{ ann.detail.title }}</h2>
                 </div>
                 <div style="display:flex;align-items:center;gap:11px;padding:12px 14px;margin-bottom:16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:0 1px 2px rgba(13,18,32,0.05)">
-                  <span style="width:34px;height:34px;border-radius:11px;background:{{ ann.detail.typeBg }};color:{{ ann.detail.typeFg }};display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11px;font-weight:600">{{ ann.detail.pubMono }}</span>
+                  <span style="width:34px;height:34px;flex:0 0 auto;border-radius:11px;background:{{ ann.detail.typeFg }};overflow:hidden;display:block"><img src="{{ ann.detail.picSrc }}" alt="{{ ann.detail.pubMono }}" onError="{{ ann.detail.picFb }}" style="display:block;width:100%;height:100%;object-fit:{{ ann.detail.picFit }};padding:{{ ann.detail.picPad }};filter:{{ ann.detail.picFilter }};box-sizing:border-box" /></span>
                   <span style="min-width:0;line-height:1.3">
                     <span style="display:block;font-size:13px;font-weight:600">{{ ann.detail.publisher }}</span>
                     <span style="display:block;font-size:11.5px;color:var(--text-muted)">{{ ann.detail.audience }} · {{ ann.detail.loc }}</span>
@@ -1560,7 +1596,7 @@
     <sc-if value="{{ isRes }}" hint-placeholder-val="{{ false }}">
       <div>
         <div data-res-head style="position:sticky;top:0;z-index:40;background:var(--surface);border-bottom:1px solid var(--border)">
-          <div style="max-width:1400px;margin:0 auto;padding:26px {{ gutter }} 0">
+          <div style="max-width:1500px;margin:0 auto;padding:26px {{ gutter }} 0">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap">
               <div>
                 <div style="font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:9px">Knowledge workspace</div>
@@ -1613,7 +1649,7 @@
           </div>
         </div>
 
-        <div style="max-width:1400px;margin:0 auto;padding:{{ sectionPad }} {{ gutter }};display:grid;grid-template-columns:{{ doc.cols }};gap:22px;align-items:start">
+        <div style="max-width:1500px;margin:0 auto;padding:{{ sectionPad }} {{ gutter }};display:grid;grid-template-columns:{{ doc.cols }};gap:22px;align-items:start">
           <div style="display:{{ doc.stripDisplay }};flex-direction:column;gap:10px;margin-bottom:4px;min-width:0;max-width:100%">
             <div style="display:flex;align-items:center;gap:8px;overflow-x:auto;padding-bottom:2px;min-width:0;max-width:100%">
               <span style="flex:0 0 auto;font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-muted)">Libraries</span>
@@ -1962,7 +1998,7 @@
             <h2 style="margin:0 0 8px;font-family:Geist,sans-serif;font-size:19px;font-weight:600;letter-spacing:-0.028em;line-height:1.25;max-width:36ch">"Our Panoli expansion changes what we can promise customers"</h2>
             <p style="margin:0 0 16px;font-size:13px;line-height:1.6;color:#AEB8CE;max-width:78ch">Managing Director Dr. Keki Gharda on the Phase 2 capacity ramp, the 500-day safety record at Panoli, what the LATAM launch means for the technical business, and where the company is investing through FY27.</p>
             <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-top:18px;border-top:1px solid rgba(255,255,255,0.1)">
-              <span style="width:38px;height:38px;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12.5px;font-weight:600">KG</span>
+              <span style="width:38px;height:38px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);overflow:hidden;display:block"><img src="{{ leaderPicSrc }}" alt="KG" onError="{{ leaderPicFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
               <span style="line-height:1.3">
                 <span style="display:block;font-size:13.5px;font-weight:600">Dr. Keki H. Gharda</span>
                 <span style="display:block;font-size:12px;color:#95A0BA">Chairman &amp; Managing Director</span>
@@ -1996,7 +2032,7 @@
     <sc-if value="{{ isFeed }}" hint-placeholder-val="{{ false }}">
       <div>
         <div style="background:var(--surface);border-bottom:1px solid var(--border)">
-          <div style="max-width:1400px;margin:0 auto;padding:26px {{ gutter }} 0">
+          <div style="max-width:1500px;margin:0 auto;padding:26px {{ gutter }} 0">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap">
               <div>
                 <div style="font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#4A3E9E;margin-bottom:9px">Collaboration network</div>
@@ -2004,17 +2040,26 @@
                 <p style="margin:9px 0 0;font-size:14.5px;line-height:1.6;color:var(--text-secondary);max-width:72ch">Department groups, project spaces, knowledge sharing and recognition — everything employees post to each other.</p>
               </div>
             </div>
-            <div style="display:flex;align-items:center;padding:18px 0 16px">
-              <span style="font-size:12px;color:var(--text-muted)">{{ com.resultCount }}</span>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:18px 0 16px">
+              <div style="position:relative;flex:1 1 260px;max-width:420px">
+                <span style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted);display:flex;pointer-events:none">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
+                </span>
+                <input value="{{ com.q }}" onChange="{{ com.onQ }}" placeholder="Search posts, people or communities" style="width:100%;height:38px;padding:0 38px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-size:13.5px;color:var(--text-primary);outline:none" style-focus="border-color:var(--accent);box-shadow:0 0 0 4px rgba(42,70,200,0.14)" />
+                <button onClick="{{ com.clearQ }}" aria-label="Clear search" style="position:absolute;right:9px;top:50%;transform:translateY(-50%);display:{{ com.clearDisplay }};width:22px;height:22px;border:0;border-radius:99px;background:var(--divider);color:var(--text-secondary);align-items:center;justify-content:center;cursor:pointer" style-hover="background:#D9DEE9;color:var(--text-primary)">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
+                </button>
+              </div>
+              <span style="margin-left:auto;font-size:12px;color:var(--text-muted)">{{ com.resultCount }}</span>
             </div>
           </div>
         </div>
 
-        <div style="max-width:1400px;margin:0 auto;padding:{{ sectionPad }} {{ gutter }};display:grid;grid-template-columns:{{ com.cols }};gap:22px;justify-content:center;align-items:start">
+        <div style="max-width:1500px;margin:0 auto;padding:{{ sectionPad }} {{ gutter }};display:grid;grid-template-columns:{{ com.cols }};gap:22px;justify-content:center;align-items:start">
           <aside style="display:{{ com.leftDisplay }};flex-direction:column;gap:16px;min-width:0;position:sticky;top:{{ stickyTop }};align-self:start;max-height:{{ stickyMaxH }};overflow-y:auto;overscroll-behavior:contain">
             <section style="background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:0 1px 2px rgba(13,18,32,0.05);overflow:hidden">
               <div style="padding:18px 16px 16px;text-align:center;border-bottom:1px solid var(--divider)">
-                <span style="display:inline-flex;width:56px;height:56px;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);color:#fff;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:17px;font-weight:600;margin-bottom:11px">RK</span>
+                <span style="display:block;width:56px;height:56px;margin:0 auto 11px;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);overflow:hidden"><img src="{{ mePicSrc }}" alt="RK" onError="{{ mePicFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                 <div style="font-family:Geist,sans-serif;font-size:14.5px;font-weight:600;letter-spacing:-0.015em">Rohan Kulkarni</div>
                 <div style="font-size:11.5px;color:var(--text-muted);margin-bottom:13px">Corporate Communications, HO</div>
                 <div style="display:flex;gap:8px;justify-content:center">
@@ -2044,7 +2089,7 @@
               </div>
               <div style="padding:16px 18px">
                 <div style="display:flex;gap:13px">
-                  <span style="width:38px;height:38px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12.5px;font-weight:600">RK</span>
+                  <span style="width:38px;height:38px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);overflow:hidden;display:block"><img src="{{ mePicSrc }}" alt="RK" onError="{{ mePicFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                   <div style="flex:1 1 auto;min-width:0">
                     <textarea value="{{ com.draft }}" onChange="{{ com.onDraft }}" placeholder="{{ com.placeholder }}" style="width:100%;min-height:66px;padding:11px 13px;border:1px solid var(--border);border-radius:13px;background:var(--subtle);font-size:14.5px;line-height:1.6;resize:vertical;outline:none" style-focus="border-color:var(--accent);background:var(--surface);box-shadow:0 0 0 4px rgba(42,70,200,0.14)"></textarea>
                     <sc-if value="{{ com.pollMode }}" hint-placeholder-val="{{ false }}">
@@ -2081,7 +2126,7 @@
             <sc-for list="{{ com.posts }}" as="p" hint-placeholder-count="4">
               <article style="background:var(--surface);border:1px solid {{ p.cardBd }};border-radius:20px;overflow:hidden;box-shadow:0 1px 2px rgba(13,18,32,0.05)">
                 <div style="display:flex;align-items:center;gap:12px;padding:16px 18px 14px">
-                  <span style="width:40px;height:40px;flex:0 0 auto;border-radius:13px;background:{{ p.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12.5px;font-weight:600">{{ p.ini }}</span>
+                  <span style="width:40px;height:40px;flex:0 0 auto;border-radius:13px;background:{{ p.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12.5px;font-weight:600;overflow:hidden"><img src="{{ p.picSrc }}" alt="{{ p.ini }}" onError="{{ p.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                   <span style="min-width:0;flex:1 1 auto">
                     <span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
                       <span style="font-size:13.5px;font-weight:600">{{ p.author }}</span>
@@ -2177,14 +2222,14 @@
                 </div>
 
                 <div style="display:{{ p.commentPreviewDisplay }};align-items:center;gap:10px;padding:0 18px 14px">
-                  <span style="width:26px;height:26px;flex:0 0 auto;border-radius:99px;background:{{ p.previewAv }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10px;font-weight:600">{{ p.previewIni }}</span>
+                  <span style="width:26px;height:26px;flex:0 0 auto;border-radius:99px;background:{{ p.previewAv }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10px;font-weight:600;overflow:hidden"><img src="{{ p.previewPicSrc }}" alt="{{ p.previewIni }}" onError="{{ p.previewPicFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                   <span style="min-width:0;font-size:12.5px;line-height:1.5;color:var(--text-secondary)"><span style="font-weight:600;color:var(--text-primary)">{{ p.previewWho }}</span> {{ p.previewText }}</span>
                 </div>
 
                 <div style="display:{{ p.commentsDisplay }};flex-direction:column;gap:12px;padding:15px 18px;border-top:1px solid var(--divider);background:var(--subtle)">
                   <sc-for list="{{ p.comments }}" as="c" hint-placeholder-count="1">
                     <div style="display:flex;gap:10px">
-                      <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10.5px;font-weight:600">{{ c.ini }}</span>
+                      <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10.5px;font-weight:600;overflow:hidden"><img src="{{ c.picSrc }}" alt="{{ c.ini }}" onError="{{ c.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                       <div style="min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:10px 13px">
                         <div style="font-size:12px;font-weight:600;margin-bottom:3px">{{ c.who }}</div>
                         <div style="font-size:13.5px;line-height:1.55;color:#29303F">{{ c.text }}</div>
@@ -2192,7 +2237,7 @@
                     </div>
                   </sc-for>
                   <div style="display:flex;gap:10px;align-items:center">
-                    <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10.5px;font-weight:600">RK</span>
+                    <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);overflow:hidden;display:block"><img src="{{ mePicSrc }}" alt="RK" onError="{{ mePicFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                     <input value="{{ p.draft }}" onChange="{{ p.onDraft }}" onKeyDown="{{ p.submitCommentKey }}" placeholder="Write a comment…" style="flex:1 1 auto;height:36px;padding:0 14px;border:1px solid var(--border);border-radius:99px;background:var(--surface);font-size:13.5px;outline:none" style-focus="border-color:var(--accent);box-shadow:0 0 0 4px rgba(42,70,200,0.14)" />
                     <button onClick="{{ p.submitComment }}" style="width:36px;height:36px;flex:0 0 auto;border:0;border-radius:99px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#1F35A0">
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h13" /><path d="m12 6.5 5.5 5.5-5.5 5.5" /></svg>
@@ -2208,10 +2253,19 @@
                   <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20.5 11.5c0 4.1-3.8 7.4-8.5 7.4a9.8 9.8 0 0 1-2.7-.4L4.5 20l1.2-3.4a7 7 0 0 1-2.2-5.1C3.5 7.4 7.3 4.1 12 4.1s8.5 3.3 8.5 7.4Z" /></svg>
                 </span>
                 <div style="font-family:Geist,sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.02em;margin-bottom:6px">Nothing here yet</div>
-                <div style="font-size:13.5px;line-height:1.6;color:var(--text-secondary);max-width:44ch;margin-bottom:18px">No posts match this filter. Try another content type or community — or start the conversation yourself.</div>
-                <button onClick="{{ com.clearFilters }}" style="height:38px;padding:0 16px;border:1px solid var(--border);border-radius:11px;background:var(--surface);color:var(--accent);font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#C3CEFA;background:#EEF1FE">Clear filters</button>
+                <div style="font-size:13.5px;line-height:1.6;color:var(--text-secondary);max-width:44ch;margin-bottom:18px">No posts match your search. Try another name, community or keyword — or start the conversation yourself.</div>
+                <button onClick="{{ com.clearQ }}" style="height:38px;padding:0 16px;border:1px solid var(--border);border-radius:11px;background:var(--surface);color:var(--accent);font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#C3CEFA;background:#EEF1FE">Clear search</button>
               </div>
             </sc-if>
+
+            <sc-if value="{{ com.hasMore }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ com.loadMore }}" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:42px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text-secondary);font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#C3CEFA;color:var(--text-primary)">
+                <span>{{ com.moreLabel }}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5v13" /><path d="m6.5 13 5.5 5.5 5.5-5.5" /></svg>
+              </button>
+            </sc-if>
+
+            <div style="display:{{ com.endDisplay }};padding:4px 0 2px;text-align:center;font-size:12px;color:var(--text-muted)">You've reached the end</div>
           </div>
 
           <div style="display:{{ com.railDisplay }};flex-direction:column;gap:16px;min-width:0;position:sticky;top:{{ stickyTop }};align-self:start;max-height:{{ stickyMaxH }};overflow-y:auto;overscroll-behavior:contain">
@@ -2239,7 +2293,7 @@
               <div style="display:flex;flex-direction:column;gap:13px">
                 <sc-for list="{{ com.suggested }}" as="p" hint-placeholder-count="4">
                   <div style="display:flex;align-items:center;gap:11px">
-                    <span style="width:36px;height:36px;flex:0 0 auto;border-radius:99px;background:{{ p.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11.5px;font-weight:600">{{ p.ini }}</span>
+                    <span style="width:36px;height:36px;flex:0 0 auto;border-radius:99px;background:{{ p.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11.5px;font-weight:600;overflow:hidden"><img src="{{ p.picSrc }}" alt="{{ p.ini }}" onError="{{ p.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                     <span style="min-width:0;flex:1 1 auto;line-height:1.3">
                       <span style="display:block;font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.name }}</span>
                       <span style="display:block;font-size:11px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.by }}</span>
@@ -2293,27 +2347,31 @@
     <sc-if value="{{ isKnow }}" hint-placeholder-val="{{ false }}">
       <div>
         <div style="position:sticky;top:0;z-index:40;background:var(--surface);border-bottom:1px solid var(--border)">
-          <div style="max-width:1400px;margin:0 auto;padding:26px {{ gutter }} 0">
+          <div style="max-width:1500px;margin:0 auto;padding:26px {{ gutter }} 0">
             <div style="font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#8A5316;margin-bottom:9px">Peer learning</div>
             <h1 style="margin:0;font-family:Geist,sans-serif;font-size:{{ pageTitleSize }};font-weight:600;letter-spacing:-0.032em">Knowledge Centre</h1>
             <p style="margin:9px 0 0;font-size:14.5px;line-height:1.6;color:var(--text-secondary);max-width:72ch">Open to every employee. Teach one thing you know well.</p>
             <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:20px 0 16px">
-              <div style="display:inline-flex;flex:0 0 auto;gap:3px;padding:3px;background:var(--divider);border:1px solid var(--border);border-radius:99px">
-                <sc-for list="{{ knowFilters }}" as="t" hint-placeholder-count="5">
-                  <button onClick="{{ t.click }}" style="height:32px;padding:0 14px;border:0;border-radius:99px;background:{{ t.bg }};color:{{ t.fg }};font-size:12.5px;font-weight:600;cursor:pointer;box-shadow:{{ t.shadow }}">{{ t.name }}</button>
-                </sc-for>
+              <div style="position:relative;flex:1 1 260px;max-width:420px">
+                <span style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted);display:flex;pointer-events:none">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
+                </span>
+                <input value="{{ knowQ }}" onChange="{{ onKnowQ }}" placeholder="Search by title, author or tag" style="width:100%;height:38px;padding:0 38px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-size:13.5px;color:var(--text-primary);outline:none" style-focus="border-color:var(--accent);box-shadow:0 0 0 4px rgba(42,70,200,0.14)" />
+                <button onClick="{{ clearKnowQ }}" aria-label="Clear search" style="position:absolute;right:9px;top:50%;transform:translateY(-50%);display:{{ knowClearDisplay }};width:22px;height:22px;border:0;border-radius:99px;background:var(--divider);color:var(--text-secondary);align-items:center;justify-content:center;cursor:pointer" style-hover="background:#D9DEE9;color:var(--text-primary)">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
+                </button>
               </div>
               <span style="margin-left:auto;font-size:12px;color:var(--text-muted)">{{ knowCount }}</span>
             </div>
           </div>
         </div>
 
-        <div style="max-width:1400px;margin:0 auto;padding:{{ sectionPad }} {{ gutter }};display:grid;grid-template-columns:minmax(0,860px);gap:22px;align-items:start">
+        <div style="max-width:1500px;margin:0 auto;padding:{{ sectionPad }} {{ gutter }};display:grid;grid-template-columns:minmax(0,860px);gap:22px;align-items:start">
           <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
             <sc-for list="{{ knowList }}" as="k" hint-placeholder-count="6">
               <article style="background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 1px 2px rgba(13,18,32,0.05)">
                 <div style="display:flex;align-items:center;gap:12px;padding:16px 18px 14px">
-                  <span style="width:40px;height:40px;flex:0 0 auto;border-radius:13px;background:{{ k.avBg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12.5px;font-weight:600">{{ k.initials }}</span>
+                  <span style="width:40px;height:40px;flex:0 0 auto;border-radius:13px;background:{{ k.avBg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12.5px;font-weight:600;overflow:hidden"><img src="{{ k.picSrc }}" alt="{{ k.initials }}" onError="{{ k.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                   <span style="min-width:0;flex:1 1 auto">
                     <span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
                       <span style="font-size:13.5px;font-weight:600">{{ k.author }}</span>
@@ -2344,14 +2402,14 @@
                 </div>
 
                 <div style="display:{{ k.commentPreviewDisplay }};align-items:center;gap:10px;padding:0 18px 14px">
-                  <span style="width:26px;height:26px;flex:0 0 auto;border-radius:99px;background:{{ k.previewAv }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10px;font-weight:600">{{ k.previewIni }}</span>
+                  <span style="width:26px;height:26px;flex:0 0 auto;border-radius:99px;background:{{ k.previewAv }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10px;font-weight:600;overflow:hidden"><img src="{{ k.previewPicSrc }}" alt="{{ k.previewIni }}" onError="{{ k.previewPicFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                   <span style="min-width:0;font-size:12.5px;line-height:1.5;color:var(--text-secondary)"><span style="font-weight:600;color:var(--text-primary)">{{ k.previewWho }}</span> {{ k.previewText }}</span>
                 </div>
 
                 <div style="display:{{ k.commentsDisplay }};flex-direction:column;gap:12px;padding:15px 18px;border-top:1px solid var(--divider);background:var(--subtle)">
                   <sc-for list="{{ k.comments }}" as="c" hint-placeholder-count="1">
                     <div style="display:flex;gap:10px">
-                      <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10.5px;font-weight:600">{{ c.ini }}</span>
+                      <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10.5px;font-weight:600;overflow:hidden"><img src="{{ c.picSrc }}" alt="{{ c.ini }}" onError="{{ c.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                       <div style="min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:10px 13px">
                         <div style="font-size:12px;font-weight:600;margin-bottom:3px">{{ c.who }}</div>
                         <div style="font-size:13.5px;line-height:1.55;color:#29303F">{{ c.text }}</div>
@@ -2359,7 +2417,7 @@
                     </div>
                   </sc-for>
                   <div style="display:flex;gap:10px;align-items:center">
-                    <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10.5px;font-weight:600">RK</span>
+                    <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);overflow:hidden;display:block"><img src="{{ mePicSrc }}" alt="RK" onError="{{ mePicFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                     <input value="{{ k.draft }}" onChange="{{ k.onDraft }}" onKeyDown="{{ k.submitCommentKey }}" placeholder="Write a comment…" style="flex:1 1 auto;height:36px;padding:0 14px;border:1px solid var(--border);border-radius:99px;background:var(--surface);font-size:13.5px;outline:none" style-focus="border-color:var(--accent);box-shadow:0 0 0 4px rgba(42,70,200,0.14)" />
                     <button onClick="{{ k.submitComment }}" style="width:36px;height:36px;flex:0 0 auto;border:0;border-radius:99px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#1F35A0">
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h13" /><path d="m12 6.5 5.5 5.5-5.5 5.5" /></svg>
@@ -2368,6 +2426,23 @@
                 </div>
               </article>
             </sc-for>
+
+            <sc-if value="{{ knowEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:38px 22px;text-align:center">
+                <div style="font-family:Geist,sans-serif;font-size:15px;font-weight:600;letter-spacing:-0.015em;margin-bottom:6px">Nothing found for “{{ knowQ }}”</div>
+                <p style="margin:0 0 16px;font-size:13px;line-height:1.55;color:var(--text-muted)">Try another title, author or tag.</p>
+                <button onClick="{{ clearKnowQ }}" style="height:34px;padding:0 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text-secondary);font-size:12.5px;font-weight:500;cursor:pointer" style-hover="border-color:#C3CEFA;color:var(--text-primary)">Clear search</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ knowHasMore }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ loadMoreKnow }}" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:42px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text-secondary);font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#C3CEFA;color:var(--text-primary)">
+                <span>{{ knowMoreLabel }}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5v13" /><path d="m6.5 13 5.5 5.5 5.5-5.5" /></svg>
+              </button>
+            </sc-if>
+
+            <div style="display:{{ knowEndDisplay }};padding:4px 0 2px;text-align:center;font-size:12px;color:var(--text-muted)">You've reached the end</div>
           </div>
         </div>
       </div>
@@ -2391,7 +2466,7 @@
             <sc-for list="{{ connectList }}" as="c" hint-placeholder-count="2">
               <article style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden">
                 <div style="display:flex;align-items:center;gap:11px;padding:11px 14px">
-                  <span style="width:36px;height:36px;flex:0 0 auto;border-radius:99px;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12px;font-weight:600">{{ c.ini }}</span>
+                  <span style="width:36px;height:36px;flex:0 0 auto;border-radius:99px;background:{{ c.av }};overflow:hidden;display:block"><img src="{{ c.picSrc }}" alt="{{ c.ini }}" onError="{{ c.picFb }}" style="display:block;width:100%;height:100%;object-fit:{{ c.picFit }};padding:{{ c.picPad }};filter:{{ c.picFilter }};box-sizing:border-box" /></span>
                   <span style="min-width:0;flex:1 1 auto;line-height:1.3">
                     <span style="display:block;font-size:13.5px;font-weight:600;color:var(--text-primary)">{{ c.author }}</span>
                     <span style="display:block;font-size:11.5px;color:var(--text-muted)">{{ c.dept }} · {{ c.date }}</span>
@@ -2436,7 +2511,7 @@
                 <div style="display:{{ c.commentsDisplay }};flex-direction:column;gap:12px;padding:13px 14px;border-top:1px solid var(--divider)">
                   <sc-for list="{{ c.comments }}" as="m" hint-placeholder-count="1">
                     <div style="display:flex;gap:10px">
-                      <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:{{ m.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10.5px;font-weight:600">{{ m.ini }}</span>
+                      <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:{{ m.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10.5px;font-weight:600;overflow:hidden"><img src="{{ m.picSrc }}" alt="{{ m.ini }}" onError="{{ m.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                       <div style="min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:10px 13px">
                         <div style="font-size:12px;font-weight:600;margin-bottom:3px">{{ m.who }}</div>
                         <div style="font-size:13.5px;line-height:1.55;color:#29303F">{{ m.text }}</div>
@@ -2444,7 +2519,7 @@
                     </div>
                   </sc-for>
                   <div style="display:flex;gap:10px;align-items:center">
-                    <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10.5px;font-weight:600">RK</span>
+                    <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);overflow:hidden;display:block"><img src="{{ mePicSrc }}" alt="RK" onError="{{ mePicFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                     <input value="{{ c.draft }}" onChange="{{ c.onDraft }}" onKeyDown="{{ c.submitCommentKey }}" placeholder="Write a comment…" style="flex:1 1 auto;height:36px;padding:0 14px;border:1px solid var(--border);border-radius:99px;background:var(--surface);font-size:13.5px;outline:none" style-focus="border-color:var(--accent);box-shadow:0 0 0 4px rgba(42,70,200,0.14)" />
                     <button onClick="{{ c.submitComment }}" style="width:36px;height:36px;flex:0 0 auto;border:0;border-radius:99px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#1F35A0">
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h13" /><path d="m12 6.5 5.5 5.5-5.5 5.5" /></svg>
@@ -2479,7 +2554,7 @@
               <div style="font-size:10.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:11px">Network admins</div>
               <div style="display:flex;align-items:center;gap:-6px">
                 <sc-for list="{{ connectAdmins }}" as="a" hint-placeholder-count="5">
-                  <span title="{{ a.name }}" style="width:34px;height:34px;margin-right:-8px;border-radius:99px;background:{{ a.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11px;font-weight:600;border:2px solid #fff">{{ a.ini }}</span>
+                  <span title="{{ a.name }}" style="width:34px;height:34px;margin-right:-8px;border-radius:99px;background:{{ a.av }};overflow:hidden;display:block;border:2px solid #fff"><img src="{{ a.picSrc }}" alt="{{ a.ini }}" onError="{{ a.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                 </sc-for>
                 <span style="width:34px;height:34px;border-radius:99px;background:var(--divider);color:var(--text-secondary);display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11px;font-weight:600;border:2px solid #fff">+20</span>
               </div>
@@ -2494,7 +2569,7 @@
                 <sc-for list="{{ connectLeaders }}" as="p" hint-placeholder-count="5">
                   <div style="display:flex;align-items:center;gap:11px">
                     <span style="font-family:Geist,sans-serif;font-size:12px;font-weight:600;color:#CBD1DE;flex:0 0 auto;width:14px">{{ p.rank }}</span>
-                    <span style="width:36px;height:36px;flex:0 0 auto;border-radius:99px;background:{{ p.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11.5px;font-weight:600">{{ p.ini }}</span>
+                    <span style="width:36px;height:36px;flex:0 0 auto;border-radius:99px;background:{{ p.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11.5px;font-weight:600;overflow:hidden"><img src="{{ p.picSrc }}" alt="{{ p.ini }}" onError="{{ p.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                     <span style="min-width:0;flex:1 1 auto;line-height:1.3">
                       <span style="display:block;font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.name }}</span>
                       <span style="display:block;font-size:11px;color:var(--text-muted)">{{ p.pts }} points</span>
@@ -2514,7 +2589,7 @@
     <sc-if value="{{ isCares }}" hint-placeholder-val="{{ false }}">
       <div>
         <section style="background:#0B3F36;color:#fff;background-image:radial-gradient(820px 380px at 12% -30%,rgba(16,150,120,0.5),transparent 62%),linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:auto,74px 74px,74px 74px">
-          <div style="max-width:1400px;margin:0 auto;padding:{{ heroPad }}">
+          <div style="max-width:1500px;margin:0 auto;padding:{{ heroPad }}">
             <div style="display:inline-flex;align-items:center;gap:8px;height:26px;padding:0 11px;border:1px solid rgba(255,255,255,0.16);background:rgba(255,255,255,0.07);border-radius:99px;font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:#C6E4DA;margin-bottom:18px">Gharda Cares</div>
             <h1 style="margin:0 0 14px;font-family:Geist,sans-serif;font-size:{{ hubTitleSize }};font-weight:600;letter-spacing:-0.036em;line-height:1.06;white-space:{{ oneLine }}">CSR and sustainability, reported honestly</h1>
             <p style="margin:0 0 30px;font-size:16px;line-height:1.62;color:rgba(255,255,255,0.78);white-space:{{ oneLine }}">Health, education and environment programmes around our sites — with the numbers behind them, and a way to take part.</p>
@@ -2528,12 +2603,13 @@
             </div>
           </div>
         </section>
-        <div style="max-width:1120px;margin:0 auto;padding:{{ pagePad }};display:flex;flex-direction:column;gap:16px">
+        <div style="max-width:1500px;margin:0 auto;padding:{{ pagePad }};display:flex;flex-direction:column;gap:16px">
           <sc-for list="{{ caresList }}" as="c" hint-placeholder-count="3">
             <article style="display:grid;grid-template-columns:{{ leaderCols }};background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(13,18,32,0.05)">
-              <div style="min-height:180px;background:linear-gradient(150deg,#E2F2EE,#F7F8FB);display:flex;align-items:center;justify-content:center">
-                <span style="width:52px;height:52px;border-radius:16px;background:#0B3F36;color:#fff;display:flex;align-items:center;justify-content:center">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c-4 0-7-3-7-7 0-5 5-9 12-9 0 8-2 16-5 16Z" /><path d="M5 20c2-6 6-9 11-11" /></svg>
+              <div style="position:relative;min-height:180px;background:linear-gradient(150deg,#E2F2EE,#F7F8FB);overflow:hidden">
+                <img src="{{ c.img }}" alt="{{ c.title }}" onError="{{ c.imgFb }}" style="display:block;width:100%;height:100%;object-fit:cover" />
+                <span style="position:absolute;left:14px;bottom:14px;width:38px;height:38px;border-radius:12px;background:rgba(11,63,54,0.86);color:#fff;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c-4 0-7-3-7-7 0-5 5-9 12-9 0 8-2 16-5 16Z" /><path d="M5 20c2-6 6-9 11-11" /></svg>
                 </span>
               </div>
               <div style="padding:22px 24px">
@@ -2565,6 +2641,15 @@
               </div>
             </article>
           </sc-for>
+
+          <sc-if value="{{ caresHasMore }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ loadMoreCares }}" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:42px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text-secondary);font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#C8E6DD;color:#0A6B52">
+              <span>{{ caresMoreLabel }}</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5v13" /><path d="m6.5 13 5.5 5.5 5.5-5.5" /></svg>
+            </button>
+          </sc-if>
+
+          <div style="display:{{ caresEndDisplay }};padding:4px 0 2px;text-align:center;font-size:12px;color:var(--text-muted)">That's every programme we're reporting on</div>
         </div>
       </div>
     </sc-if>
@@ -2646,7 +2731,9 @@
                   <div onMouseEnter="{{ c.hover }}" style="display:flex;align-items:center;gap:4px;border-radius:13px;background:{{ c.selBg }};margin-bottom:2px" style-hover="background:var(--hover)">
                     <button onClick="{{ c.open }}" style="display:flex;gap:11px;flex:1 1 auto;min-width:0;text-align:left;padding:10px 4px 10px 10px;border:0;border-radius:13px;background:transparent;cursor:pointer">
                       <span style="position:relative;width:38px;height:38px;flex:0 0 auto">
-                        <span style="width:38px;height:38px;border-radius:12px;background:{{ c.color }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12px;font-weight:600">{{ c.initials }}</span>
+                        <span style="width:38px;height:38px;border-radius:12px;background:{{ c.avatarBg }};overflow:hidden;display:block">
+                          <img src="{{ c.avatarSrc }}" alt="{{ c.initials }}" onError="{{ c.avatarFallback }}" style="display:block;width:100%;height:100%;object-fit:{{ c.avatarFit }}" />
+                        </span>
                         <span style="display:{{ c.presenceDisplay }};position:absolute;right:-2px;bottom:-2px;width:11px;height:11px;border-radius:99px;background:{{ c.presenceColor }};border:2px solid #FBFCFE"></span>
                       </span>
                       <span style="min-width:0;flex:1 1 auto">
@@ -2686,7 +2773,9 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6" /></svg>
             </button>
             <span style="position:relative;width:38px;height:38px;flex:0 0 auto">
-              <span style="width:38px;height:38px;border-radius:12px;background:{{ ch.activeColor }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12px;font-weight:600">{{ ch.activeInitials }}</span>
+              <span style="width:38px;height:38px;border-radius:12px;background:{{ ch.activeAvatarBg }};overflow:hidden;display:block">
+                <img src="{{ ch.activeAvatarSrc }}" alt="{{ ch.activeInitials }}" onError="{{ ch.activeAvatarFallback }}" style="display:block;width:100%;height:100%;object-fit:{{ ch.activeAvatarFit }}" />
+              </span>
               <span style="display:{{ ch.activePresenceDisplay }};position:absolute;right:-2px;bottom:-2px;width:11px;height:11px;border-radius:99px;background:{{ ch.activePresenceColor }};border:2px solid #fff"></span>
             </span>
             <div style="min-width:0">
@@ -2724,7 +2813,9 @@
                 <span style="font-size:11.5px;line-height:1.5;color:var(--text-secondary)">{{ m.text }}</span>
               </div>
               <div style="display:{{ m.bubbleWrapDisplay }};gap:10px;max-width:min(600px,88%);align-self:{{ m.align }};flex-direction:{{ m.dir }}">
-                <span style="width:30px;height:30px;flex:0 0 auto;border-radius:99px;background:{{ m.avBg }};color:#fff;display:{{ m.avDisplay }};align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10.5px;font-weight:600">{{ m.initials }}</span>
+                <span style="width:30px;height:30px;flex:0 0 auto;border-radius:99px;background:{{ m.avBg }};overflow:hidden;display:{{ m.avDisplay }}">
+                  <img src="{{ m.avatarSrc }}" alt="{{ m.initials }}" onError="{{ m.avatarFallback }}" style="display:block;width:100%;height:100%;object-fit:cover" />
+                </span>
                 <div style="min-width:0">
                   <div style="display:{{ m.nameDisplay }};align-items:center;gap:8px;margin-bottom:4px">
                     <span style="font-size:11.5px;font-weight:600;color:var(--text-secondary)">{{ m.who }}</span>
@@ -2835,7 +2926,7 @@
                   <sc-for list="{{ ch.memberList }}" as="p" hint-placeholder-count="5">
                     <div style="display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:11px" style-hover="background:var(--background)">
                       <span style="position:relative;width:28px;height:28px;flex:0 0 auto">
-                        <span style="width:28px;height:28px;border-radius:99px;background:{{ p.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:9.5px;font-weight:600">{{ p.ini }}</span>
+                        <span style="width:28px;height:28px;border-radius:99px;background:{{ p.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:9.5px;font-weight:600;overflow:hidden"><img src="{{ p.picSrc }}" alt="{{ p.ini }}" onError="{{ p.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                         <span style="position:absolute;right:-1px;bottom:-1px;width:9px;height:9px;border-radius:99px;background:{{ p.dot }};border:2px solid #fff"></span>
                       </span>
                       <span style="min-width:0;flex:1 1 auto;line-height:1.25">
@@ -2938,7 +3029,7 @@
               <div style="max-height:52vh;overflow-y:auto;padding:8px">
                 <sc-for list="{{ ch.searchResults }}" as="r" hint-placeholder-count="4">
                   <button onClick="{{ r.click }}" style="display:flex;gap:12px;width:100%;text-align:left;padding:11px 12px;border:0;border-radius:12px;background:transparent;cursor:pointer" style-hover="background:var(--hover)">
-                    <span style="width:30px;height:30px;flex:0 0 auto;border-radius:9px;background:{{ r.bg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:9.5px;font-weight:600">{{ r.ini }}</span>
+                    <span style="width:30px;height:30px;flex:0 0 auto;border-radius:9px;background:{{ r.bg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:9.5px;font-weight:600;overflow:hidden"><img src="{{ r.picSrc }}" alt="{{ r.ini }}" onError="{{ r.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                     <span style="min-width:0;flex:1 1 auto">
                       <span style="display:flex;align-items:center;gap:8px;margin-bottom:3px">
                         <span style="font-size:12.5px;font-weight:600;color:var(--text-primary)">{{ r.who }}</span>
@@ -3061,7 +3152,7 @@
           <sc-for list="{{ userList }}" as="u" hint-placeholder-count="8">
             <div style="display:grid;grid-template-columns:{{ userCols }};gap:12px;padding:12px 18px;border-bottom:1px solid var(--divider);align-items:center" style-hover="background:var(--subtle)">
               <div style="display:flex;align-items:center;gap:12px;min-width:0">
-                <span style="width:34px;height:34px;flex:0 0 auto;border-radius:11px;background:{{ u.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11.5px;font-weight:600">{{ u.ini }}</span>
+                <span style="width:34px;height:34px;flex:0 0 auto;border-radius:11px;background:{{ u.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11.5px;font-weight:600;overflow:hidden"><img src="{{ u.picSrc }}" alt="{{ u.ini }}" onError="{{ u.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
                 <div style="min-width:0">
                   <div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ u.name }}</div>
                   <div style="font-family:Geist,sans-serif;font-size:11.5px;color:var(--text-muted)">{{ u.code }}</div>
@@ -3427,8 +3518,9 @@
               <sc-for list="{{ g.items }}" as="d" hint-placeholder-count="3">
                 <div onMouseEnter="{{ d.hover }}" style="display:flex;align-items:center;gap:6px;padding:0 8px 0 0;border-radius:14px;background:{{ d.bg }}" style-hover="background:var(--hover)">
                   <button onClick="{{ d.click }}" style="display:flex;align-items:center;gap:13px;flex:1 1 auto;min-width:0;text-align:left;padding:11px 4px 11px 12px;border:0;border-radius:14px;background:transparent;cursor:pointer">
-                    <span style="width:38px;height:38px;flex:0 0 auto;border-radius:12px;background:{{ d.accent }};color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px -8px rgba(13,18,32,0.5)">
+                    <span style="position:relative;width:38px;height:38px;flex:0 0 auto;border-radius:12px;background:{{ d.accent }};color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px -8px rgba(13,18,32,0.5);overflow:hidden">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="{{ d.icon }}" /></svg>
+                      <img src="{{ d.logo }}" alt="{{ d.name }}" onError="{{ d.logoFb }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:8px;box-sizing:border-box;display:{{ d.logoDisplay }}" />
                     </span>
                     <span style="min-width:0;flex:1 1 auto">
                       <span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">
@@ -3482,7 +3574,8 @@
         <div style="max-height:56vh;overflow-y:auto;padding:8px">
           <sc-for list="{{ paletteResults }}" as="r" hint-placeholder-count="5">
             <button onClick="{{ r.click }}" style="display:flex;align-items:center;gap:13px;width:100%;text-align:left;padding:11px 12px;border:0;border-radius:12px;background:transparent;cursor:pointer" style-hover="background:var(--hover)">
-              <span style="width:30px;height:30px;flex:0 0 auto;border-radius:9px;background:{{ r.chipBg }};color:{{ r.chipFg }};display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:9.5px;font-weight:600">{{ r.mono }}</span>
+              <span style="width:30px;height:30px;flex:0 0 auto;border-radius:9px;background:{{ r.chipBg }};overflow:hidden;display:{{ r.picDisplay }}"><img src="{{ r.picSrc }}" alt="{{ r.mono }}" onError="{{ r.picFb }}" style="display:block;width:100%;height:100%;object-fit:cover" /></span>
+              <span style="position:relative;width:30px;height:30px;flex:0 0 auto;border-radius:9px;background:{{ r.chipBg }};color:{{ r.chipFg }};display:{{ r.monoDisplay }};overflow:hidden;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:9.5px;font-weight:600">{{ r.mono }}<img src="{{ r.logo }}" alt="{{ r.mono }}" onError="{{ r.logoFb }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:4px;box-sizing:border-box;display:{{ r.logoDisplay }}" /></span>
               <span style="flex:1 1 auto;min-width:0">
                 <span style="display:block;font-size:13.5px;font-weight:600;color:var(--text-primary)">{{ r.label }}</span>
                 <span style="display:block;font-size:11.5px;color:var(--text-muted)">{{ r.sub }}</span>
@@ -4074,6 +4167,10 @@ const TYPEC = {
   PDF: ["#FBEDEB", "#A32B22"], XLSX: ["#E6F4F0", "#0A6B52"], DOCX: ["#EEF1FE", "#2A46C8"],
   ZIP: ["#F1F3F8", "#47506A"], PPT: ["#FBF3E8", "#8A5316"], Article: ["#EDEAFB", "#4A3E9E"], Video: ["#E3EEF7", "#175C86"]
 };
+// The signed-in employee. Their avatar resolves through the same
+// assets/avatars/<slug>.png lookup as everyone else.
+const ME = "Rohan Kulkarni";
+
 const AV = ["#2A46C8", "#0A6B52", "#8A5316", "#4A3E9E", "#175C86", "#A32B22"];
 
 const CLIPS = [
@@ -4130,8 +4227,14 @@ function ytEmbedSrc(id) {
     + YT_ORIGIN;
 }
 
-// Employee Connect: posts revealed per "Load more" press.
+// Posts revealed per "Load more" press.
 const CONNECT_PAGE = 2;
+const KNOW_PAGE = 3;
+const CARES_PAGE = 3;
+// Flip to true once every assets/cares/<id>.jpg is in place. Until then every
+// card uses a generated scene, so the page never mixes photos with vectors.
+const CARES_PHOTOS_READY = false;
+const FEED_PAGE = 3;
 
 // Home hero carousel. One slide per video; ytId is the id from its YouTube URL.
 const HOME_HERO_SLIDES = [
@@ -4147,7 +4250,7 @@ const HOME_HERO_SLIDES = [
     badge: "Live · Indore 2025",
     title: "Gharda Chemicals live from Indore, 2025",
     blurb: "The full recording of the company's 2025 Indore event.",
-    author: "Corporate Communications", initials: "CC",
+    author: "Corporate Communications", initials: "CC", org: true,
     role: "Company event", mins: "Live recording",
     ytId: "DtTY6fSg5-o", ytTitle: "LIVE - Gharda Chemicals Limited | 2025 | Indore"
   },
@@ -4155,7 +4258,7 @@ const HOME_HERO_SLIDES = [
     badge: "Campus · Gharda Institute of Technology",
     title: "Campus tour: Gharda Institute of Technology",
     blurb: "A walk through the Lavel campus — the teaching blocks, laboratories and student facilities.",
-    author: "Gharda Institute of Technology", initials: "GI",
+    author: "Gharda Institute of Technology", initials: "GI", org: true,
     role: "Education trust", mins: "Campus tour",
     ytId: "_9L5bpzHVR8", ytTitle: "Campus Tour | Gharda Institute of Technology"
   },
@@ -4163,7 +4266,7 @@ const HOME_HERO_SLIDES = [
     badge: "Company film · 2016",
     title: "Gharda Chemicals: the company film",
     blurb: "The corporate film covering the plants, the product range and the research programme. Narrated in Gujarati.",
-    author: "Gharda Chemicals Limited", initials: "GC",
+    author: "Gharda Chemicals Limited", initials: "GC", org: true,
     role: "Corporate film", mins: "Gujarati",
     ytId: "6CT3Ft-kYww", ytTitle: "Gharda Chemicals Ltd (Gujarati, 2016)"
   }
@@ -4267,7 +4370,7 @@ class Component extends DCLogic {
     docLayout: "List", docType: "All types", docOwner: "All owners", docAccess: "All access levels", docStatus: "Any status", docDetail: null, docTab: "Details", govOpen: false, docFav: {},
     up: { name: "", cat: "Policies", access: "All employees", tags: "" },
     composer: "", composerMedia: false, comKind: "Post", comCommunity: "All communities", comPollA: "", comPollB: "", comAudience: "Gharda Unplugged", joined: { unplugged: true, ehs: true, panoli: true }, followPeople: {},
-    knowType: "All",
+    knowQ: "", knowShown: KNOW_PAGE, caresShown: CARES_PAGE, comQ: "", feedShown: FEED_PAGE,
     commentOpen: {}, drafts: {},
     activeChat: 1, msgDraft: "", chatSettings: false, chatQ: "", chatOpened: false, chatListW: 336,
     chFilter: "All", chFav: {}, chSearchOpen: false, chSearchQ: "", chSearchFilter: "All", chPresence: "Available", chNotif: "All messages", chReactions: {}, chPinned: {}, chDraftSaved: false,
@@ -4332,7 +4435,10 @@ class Component extends DCLogic {
     cares: [
       { id: 1, title: "Mobile health van: 4,200 screenings across 14 villages", desc: "Our CSR health programme around the Panoli and Lote sites completed its second year, with diabetes and hypertension screening plus follow-up referrals.", meta: "CSR - 22 Jul", tag: "Health", likes: 96, liked: false, comments: [] },
       { id: 2, title: "Zero liquid discharge upgrade at Dombivli", desc: "The ZLD retrofit is now handling 100% of process effluent, cutting freshwater draw by 38% year on year.", meta: "Sustainability - 15 Jul", tag: "Environment", likes: 141, liked: true, comments: [{ who: "Amit Joshi", text: "The recovery numbers are genuinely impressive." }] },
-      { id: 3, title: "Gharda Vidya scholarships for 130 students", desc: "Merit scholarships for children of contract workers and neighbouring village schools, covering fees and books for the academic year.", meta: "CSR - 2 Jul", tag: "Education", likes: 173, liked: false, comments: [] }
+      { id: 3, title: "Gharda Vidya scholarships for 130 students", desc: "Merit scholarships for children of contract workers and neighbouring village schools, covering fees and books for the academic year.", meta: "CSR - 2 Jul", tag: "Education", likes: 173, liked: false, comments: [] },
+      { id: 4, title: "1,200 saplings planted around the Lote perimeter", desc: "The monsoon plantation drive added native species along the site boundary, with a two-year maintenance contract for survival monitoring.", meta: "Sustainability - 24 Jun", tag: "Environment", likes: 88, liked: false, comments: [] },
+      { id: 5, title: "Skill centre: 240 trainees placed in the first cohort", desc: "A twelve-week fitter and electrician programme run with the district ITI, with placement support for candidates from neighbouring villages.", meta: "CSR - 11 Jun", tag: "Education", likes: 64, liked: false, comments: [{ who: "Deepa Rane", text: "The placement rate is the number that matters here." }] },
+      { id: 6, title: "Rainwater harvesting at three village schools", desc: "Rooftop catchment and recharge pits installed before the monsoon, giving the schools a dry-season supply for washrooms and drinking water.", meta: "Sustainability - 3 Jun", tag: "Environment", likes: 52, liked: false, comments: [] }
     ],
 
     feed: [
@@ -4620,6 +4726,133 @@ class Component extends DCLogic {
   ini(name) { return name.split(" ").filter(Boolean).slice(0, 2).map(w => w[0]).join("").toUpperCase(); }
   av(seed) { return AV[seed % AV.length]; }
 
+  // Profile photos live in assets/avatars/<name-slug>.png — e.g. "Deepa Rane"
+  // -> assets/avatars/deepa-rane.png. Keyed on the name rather than initials
+  // because initials collide across people. Missing files fall back to face(),
+  // so the UI never shows a broken image while artwork is still being added.
+  // Department logos live in assets/depts/<id>.png. When a file is absent the
+  // img hides itself and the monogram chip underneath shows through, so every
+  // department degrades independently with no broken-image state.
+  deptLogo(id) {
+    return {
+      logo: id ? "assets/depts/" + id + ".png" : "",
+      logoDisplay: id ? "block" : "none",
+      logoFb: e => { const t = e && e.target; if (t) t.style.display = "none"; }
+    };
+  }
+  personSlug(name) {
+    return (name || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+  personSeed(name) {
+    const sl = this.personSlug(name);
+    let h = 0;
+    for (let i = 0; i < sl.length; i++) h = (h * 31 + sl.charCodeAt(i)) | 0;
+    return Math.abs(h);
+  }
+  // Spread onto any list item that shows a person: { picSrc, picFb, ... }.
+  // prefix names the pair when one item shows two people (e.g. "previewPic").
+  pic(name, prefix) {
+    const p = prefix || "pic";
+    const seed = this.personSeed(name);
+    const sl = this.personSlug(name);
+    const out = {};
+    out[p + "Src"] = sl ? "assets/avatars/" + sl + ".png" : this.face(seed, false);
+    out[p + "Fb"] = this.avatarFallback(seed, false);
+    out[p + "Fit"] = "cover";
+    out[p + "Pad"] = "0";
+    out[p + "Filter"] = "none";
+    return out;
+  }
+  // Same shape, but for bylines that are a department or the company rather
+  // than a person — falls back to the Gharda logomark, knocked out to white
+  // because every avatar background in the app is a saturated fill.
+  orgPic(name, prefix) {
+    const p = prefix || "pic";
+    const sl = this.personSlug(name);
+    const out = {};
+    out[p + "Src"] = sl ? "assets/avatars/" + sl + ".png" : "assets/gharda-logo.png";
+    out[p + "Fb"] = e => {
+      const t = e && e.target;
+      if (!t || t.dataset.fb) return;
+      t.dataset.fb = "1";
+      t.src = "assets/gharda-logo.png";
+    };
+    out[p + "Fit"] = "contain";
+    out[p + "Pad"] = "8px";
+    out[p + "Filter"] = "brightness(0) invert(1)";
+    return out;
+  }
+  // Swaps a failed <img> over to the generated SVG, once per element.
+  avatarFallback(seed, multi) {
+    return e => {
+      const t = e && e.target;
+      if (!t || t.dataset.fb) return;
+      t.dataset.fb = "1";
+      t.src = this.face(seed, multi);
+    };
+  }
+
+  // Logo-style mark for chats that are not a person — project, channel or
+  // group. Tinted with the same type tokens the chat's chip uses.
+  chatIcon(type) {
+    const t = this.chatType(type);
+    const bg = t[1], fg = t[2];
+    const glyph = {
+      // stacked plates = a project
+      project: '<path d="M40 20 62 32 40 44 18 32Z" fill="' + fg + '" opacity="0.9"/>' +
+        '<path d="M18 42 40 54 62 42" fill="none" stroke="' + fg + '" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>' +
+        '<path d="M18 52 40 64 62 52" fill="none" stroke="' + fg + '" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>',
+      // broadcast waves = a channel
+      channel: '<path d="M26 34h8l12-9v30l-12-9h-8a3 3 0 0 1-3-3v-6a3 3 0 0 1 3-3Z" fill="' + fg + '" opacity="0.9"/>' +
+        '<path d="M53 30a13 13 0 0 1 0 20" fill="none" stroke="' + fg + '" stroke-width="4.5" stroke-linecap="round" opacity="0.6"/>' +
+        '<path d="M60 23a22 22 0 0 1 0 34" fill="none" stroke="' + fg + '" stroke-width="4.5" stroke-linecap="round" opacity="0.32"/>',
+      // three heads = a group
+      group: '<circle cx="40" cy="30" r="9" fill="' + fg + '" opacity="0.9"/>' +
+        '<path d="M25 60q0-11 15-11t15 11Z" fill="' + fg + '" opacity="0.9"/>' +
+        '<circle cx="22" cy="36" r="6.5" fill="' + fg + '" opacity="0.5"/>' +
+        '<path d="M11 58q0-8 11-8 4 0 6.5 1.4" fill="none" stroke="' + fg + '" stroke-width="4" stroke-linecap="round" opacity="0.5"/>' +
+        '<circle cx="58" cy="36" r="6.5" fill="' + fg + '" opacity="0.5"/>' +
+        '<path d="M69 58q0-8-11-8-4 0-6.5 1.4" fill="none" stroke="' + fg + '" stroke-width="4" stroke-linecap="round" opacity="0.5"/>'
+    }[type] || "";
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">' +
+      '<rect width="80" height="80" fill="' + bg + '"/>' + glyph + '</svg>';
+    return "data:image/svg+xml," + encodeURIComponent(svg);
+  }
+
+  // Placeholder profile pictures as inline SVG data URIs — same self-contained
+  // approach as photo(). seed picks the palette, multi draws a group of two
+  // for chats that are not a one-to-one DM.
+  face(seed, multi) {
+    const P = [
+      ["#DDE6FB", "#2A46C8", "#F0C7A4"],
+      ["#E6F4F0", "#0A6B52", "#E4B183"],
+      ["#EDEAFB", "#4A3E9E", "#F5D2B2"],
+      ["#FBF3E8", "#8A5316", "#E0A67B"],
+      ["#FBEDEB", "#A32B22", "#EFC4A2"],
+      ["#E7ECFD", "#152A63", "#D6A279"]
+    ][Math.abs(seed) % 6];
+    const bg = P[0], cloth = P[1], skin = P[2];
+    const R = n => Math.round(n * 10) / 10;
+    // shoulders run off the bottom edge and tuck just under the chin, so the
+    // head is never left floating; the head is drawn over the seam
+    const person = (cx, cy, r) => {
+      const w = R(r * 2.05), h = R(82 - (cy + r * 0.8));
+      return '<path d="M' + R(cx - w) + ' 82' +
+        'q0-' + h + ' ' + w + '-' + h + 'q' + w + ' 0 ' + w + ' ' + h + 'Z" fill="' + cloth + '"/>' +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + skin + '"/>' +
+        '<path d="M' + R(cx - r) + ' ' + R(cy - r * 0.3) +
+        'q0-' + R(r * 1.15) + ' ' + r + '-' + R(r * 1.15) +
+        'q' + r + ' 0 ' + r + ' ' + R(r * 1.15) +
+        'q-' + r + '-' + R(r * 0.55) + '-' + (r * 2) + ' 0Z" fill="' + cloth + '" opacity="0.9"/>';
+    };
+    const body = multi
+      ? person(30, 34, 10) + person(53, 30, 12)
+      : person(40, 31, 14);
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">' +
+      '<rect width="80" height="80" fill="' + bg + '"/>' + body + '</svg>';
+    return "data:image/svg+xml," + encodeURIComponent(svg);
+  }
+
   // Dummy album photos as inline SVG data URIs — keeps the prototype
   // self-contained (no network, nothing extra to inline at build time).
   // kind picks the scene, v (0-2) varies it so a grid of three differs.
@@ -4710,7 +4943,7 @@ class Component extends DCLogic {
     const open = !!this.state.commentOpen[key];
     return {
       ...it,
-      comments: (it.comments || []).map((c, i) => ({ ...c, ini: this.ini(c.who), av: this.av(i + 2) })),
+      comments: (it.comments || []).map((c, i) => ({ ...c, ini: this.ini(c.who), av: this.av(i + 2), ...this.pic(c.who) })),
       commentsDisplay: open ? "flex" : "none",
       toggleComments: () => this.setState(s => ({ commentOpen: { ...s.commentOpen, [key]: !s.commentOpen[key] } })),
       likeColor: it.liked ? "#2A46C8" : "#47506A",
@@ -4832,6 +5065,7 @@ class Component extends DCLogic {
         ["hr", "Human Resources"], ["fin", "Finance & Accounts"], ["ehs", "EHS & Safety"],
         ["it", "Information Technology"], ["scm", "Supply Chain"], ["csr", "CSR & Sustainability"]
       ].map(([id, name]) => ({
+        ...this.deptLogo(id),
         name, mono: this.ini(name),
         bg: s.view === "hub" && s.activeHubId === id ? "#EEF1FE" : "transparent",
         fg: s.view === "hub" && s.activeHubId === id ? "#2A46C8" : "#646E88",
@@ -4845,7 +5079,6 @@ class Component extends DCLogic {
       row("Knowledge Centre", "know", I.know, ["#FBE9CF", "#8A5316"]),
       row("Company Resources", "res", I.res, ["#D5E7F5", "#175C86"]),
       row("Conversations", "chat", I.chat, ["#DDE6FB", "#2A46C8"]),
-      row("Quicklinks", "links", I.links, ["#E3E0F7", "#4A3E9E"]),
       row("Settings", "settings", I.settings, ["#E4E8F0", "#47506A"])
     ];
     const primary = isAdmin ? main.concat([deptGroup], rest) : main.concat(rest);
@@ -4879,6 +5112,7 @@ class Component extends DCLogic {
       (() => {
         const key = "dept", open = s.menuOpen === key, on = open || s.view === "hub";
         const items = HUBS.map(h => ({
+          ...this.deptLogo(h.id),
           label: h.name, sub: h.owner, mono: h.mono, chipBg: h.panel, chipFg: h.chip,
           bg: s.view === "hub" && s.activeHubId === h.id ? "#F1F3F8" : "transparent",
           dotDisplay: s.following[h.id] ? "block" : "none",
@@ -4897,7 +5131,7 @@ class Component extends DCLogic {
         { label: "Gharda Unplugged", sub: "Informal employee posts", mono: "GU", chipBg: "#EDEAFB", chipFg: "#4A3E9E", view: "feed" },
         { label: "Gharda Cares", sub: "CSR and sustainability", mono: "GC", chipBg: "#E6F4F0", chipFg: "#0A6B52", view: "cares" },
         { label: "Knowledge Centre", sub: "Employees teaching employees", mono: "KC", chipBg: "#FBF3E8", chipFg: "#8A5316", view: "know" }
-      ].map(m => ({ ...m, dotDisplay: "none", bg: s.view === m.view ? "#F1F3F8" : "transparent", click: this.go(m.view) })), ["connect", "feed", "cares", "know"]),
+      ].map(m => ({ ...m, ...this.deptLogo(null), dotDisplay: "none", bg: s.view === m.view ? "#F1F3F8" : "transparent", click: this.go(m.view) })), ["connect", "feed", "cares", "know"]),
       item("Documents", "res"),
       item("Conversations", "chat")
     ];
@@ -4945,6 +5179,7 @@ class Component extends DCLogic {
       criticalLabel: a.type === "alert" ? "Critical alert" : "Planned downtime",
       author: a.author || a.publisher,
       authorRole: a.authorRole || a.dept,
+      ...(a.author ? this.pic(a.author) : this.orgPic(a.publisher)),
       priorityBg: prio[0], priorityFg: prio[1],
       unreadDotDisplay: a.read ? "none" : "block",
       rowBg: a.read ? "transparent" : "#FBFCFE",
@@ -5083,6 +5318,7 @@ class Component extends DCLogic {
         return {
           ...d,
           chipBg: on ? "#EEF1FE" : "#F1F3F8", chipFg: on ? "#2A46C8" : "#646E88",
+          ...this.deptLogo(d.id),
           label: on ? "Following" : "Follow",
           bg: on ? "#EEF1FE" : "#fff", bd: on ? "#D9E0FC" : "#E4E8F0", fg: on ? "#2A46C8" : "#47506A",
           toggle: () => this.setState(st => ({ following: { ...st.following, [d.id]: !st.following[d.id] } }))
@@ -5111,6 +5347,7 @@ class Component extends DCLogic {
         const d = this.annDecorate(a);
         return Object.assign(d, {
           pubMono: a.publisher.split(" ").slice(0, 2).map(w => w[0]).join("").toUpperCase(),
+          ...(a.author ? this.pic(a.author) : this.orgPic(a.publisher)),
           facts: [
             { label: "Published", value: a.published, bg: "#EEF1FE", bd: "#D9E0FC", fg: "#2A46C8" },
             { label: "Expires", value: a.expiry, bg: a.expiry === "\u2014" ? "#F1F3F8" : "#FBF3E8", bd: a.expiry === "\u2014" ? "#E4E8F0" : "#EEDCC4", fg: a.expiry === "\u2014" ? "#646E88" : "#8A5316" },
@@ -5149,10 +5386,11 @@ class Component extends DCLogic {
 
   buildCom(isAdmin, narrow) {
     const s = this.state;
-    const filtered = s.feed.filter(p => {
-      return true;
-    });
-    const list = filtered.slice();
+    const fq = (s.comQ || "").trim().toLowerCase();
+    const filtered = s.feed.filter(p => !fq ||
+      ((p.text || "") + " " + (p.author || "") + " " + (p.role || "") + " " + (p.community || "")).toLowerCase().indexOf(fq) > -1);
+    const shown = Math.max(FEED_PAGE, s.feedShown || FEED_PAGE);
+    const list = filtered.slice(0, shown);
 
     const kindTools = { Post: ["", false, false], Photo: ["Photo attached · lote_monsoon.jpg", true, false], Poll: ["", false, true], Question: ["", false, false], Knowledge: ["Document attached · guide.pdf", true, false], Event: ["", false, false] };
     const tool = kindTools[s.comKind] || kindTools.Post;
@@ -5185,7 +5423,7 @@ class Component extends DCLogic {
       ].map((p, i) => {
         const on = !!fp[p.id];
         return {
-          ...p, ini: this.ini(p.name), av: this.av(i + 1),
+          ...p, ini: this.ini(p.name), av: this.av(i + 1), ...this.pic(p.name),
           label: on ? "Following" : "Follow",
           fg: on ? "#646E88" : "#2A46C8",
           follow: () => this.setState(st => ({ followPeople: { ...(st.followPeople || {}), [p.id]: !(st.followPeople || {})[p.id] } }))
@@ -5251,7 +5489,7 @@ class Component extends DCLogic {
         const preview = (p.comments || [])[0];
         return {
           ...d,
-          ini: this.ini(p.author),
+          ini: this.ini(p.author), ...this.pic(p.author),
           kindLabel: km[0], kindBg: km[1], kindFg: km[2], kindBd: km[3], kindIcon: km[4],
           cardBd: p.kind === "kudos" ? "#C8E6DD" : "#E4E8F0",
           kudosDisplay: p.kind === "kudos" ? "flex" : "none",
@@ -5297,6 +5535,7 @@ class Component extends DCLogic {
           previewWho: preview ? preview.who : "",
           previewText: preview ? preview.text : "",
           previewIni: preview ? this.ini(preview.who) : "",
+          ...this.pic(preview ? preview.who : "", "previewPic"),
           previewAv: this.av(3),
           saveFill: p.saved ? "currentColor" : "none",
           saveBg: p.saved ? "#EEF1FE" : "#fff",
@@ -5309,9 +5548,15 @@ class Component extends DCLogic {
         };
       }),
       feedEmpty: list.length === 0,
-
-
-
+      q: s.comQ || "",
+      onQ: e => this.setState({ comQ: e.target.value, feedShown: FEED_PAGE }),
+      clearQ: () => this.setState({ comQ: "", feedShown: FEED_PAGE }),
+      clearDisplay: fq ? "flex" : "none",
+      resultCount: fq ? filtered.length + " of " + s.feed.length + " posts" : s.feed.length + " posts",
+      hasMore: filtered.length > shown,
+      moreLabel: "Load more posts (" + Math.max(0, filtered.length - shown) + " left)",
+      endDisplay: filtered.length > 0 && filtered.length <= shown ? "block" : "none",
+      loadMore: () => this.setState(p => ({ feedShown: (p.feedShown || FEED_PAGE) + FEED_PAGE }))
     };
   }
 
@@ -5512,6 +5757,15 @@ class Component extends DCLogic {
       return {
         ...c,
         color: this.av(i + 1),
+        // people get a photo (or a generated face); project/channel/group get a mark
+        avatarSrc: c.type === "dm"
+          ? this.pic(c.name).picSrc
+          : this.chatIcon(c.type),
+        avatarFallback: c.type === "dm"
+          ? this.avatarFallback(this.personSeed(c.name), false)
+          : (e => { const t = e && e.target; if (t && !t.dataset.fb) { t.dataset.fb = "1"; t.src = this.chatIcon(c.type); } }),
+        avatarFit: c.type === "dm" ? "cover" : "contain",
+        avatarBg: c.type === "dm" ? this.av(i + 1) : t[1],
         typeLabel: t[0], typeBg: t[1], typeFg: t[2], typeBd: t[3],
         typeChipDisplay: c.type === "dm" ? "none" : "inline-flex",
         lastTime: last.time || "",
@@ -5548,11 +5802,12 @@ class Component extends DCLogic {
       if (m.who === "system") return;
       searchAll.push({
         who: m.who === "me" ? "You" : m.who,
+        whoName: m.who === "me" ? ME : m.who,
         chat: c.name, time: m.time,
         text: m.text || (m.file ? m.file.name : m.link ? m.link.title : ""),
         tag: m.file ? "File" : m.link ? "Link" : m.pinned ? "Pinned" : "",
         kind: m.file ? "Files" : m.link ? "Links" : m.pinned ? "Pinned" : "Messages",
-        ini: m.who === "me" ? "RK" : (m.initials || this.ini(m.who)),
+        ini: m.who === "me" ? this.ini(ME) : (m.initials || this.ini(m.who)),
         cid: c.id
       });
     }));
@@ -5609,6 +5864,14 @@ class Component extends DCLogic {
       activeName: active.name,
       activeInitials: active.initials,
       activeColor: this.av(s.chats.indexOf(active) + 1),
+      activeAvatarSrc: active.type === "dm"
+        ? this.pic(active.name).picSrc
+        : this.chatIcon(active.type),
+      activeAvatarFallback: active.type === "dm"
+        ? this.avatarFallback(this.personSeed(active.name), false)
+        : (e => { const t = e && e.target; if (t && !t.dataset.fb) { t.dataset.fb = "1"; t.src = this.chatIcon(active.type); } }),
+      activeAvatarFit: active.type === "dm" ? "cover" : "contain",
+      activeAvatarBg: active.type === "dm" ? this.av(s.chats.indexOf(active) + 1) : at[1],
       activeTypeLabel: at[0], activeTypeBg: at[1], activeTypeFg: at[2], activeTypeBd: at[3],
       activePresenceDisplay: active.presence ? "block" : "none",
       activePresenceColor: this.presenceColor(active.presence),
@@ -5643,6 +5906,8 @@ class Component extends DCLogic {
           metaDir: mine ? "row-reverse" : "row",
           avDisplay: mine ? "none" : "flex",
           avBg: this.av(m.initials ? m.initials.charCodeAt(0) % 6 : 0),
+          avatarSrc: this.pic(m.who === "me" ? ME : m.who).picSrc,
+          avatarFallback: this.avatarFallback(this.personSeed(m.who === "me" ? ME : m.who), false),
           nameDisplay: mine || active.type === "dm" ? "none" : "flex",
           pinChipDisplay: m.pinned || s.chPinned[key] ? "inline-flex" : "none",
           bubbleBg: mine ? "#2A46C8" : "#fff",
@@ -5678,7 +5943,7 @@ class Component extends DCLogic {
       dlpNote: "Restricted file types blocked · retention 3 years",
 
       memberList: ["Rohan Kulkarni", "Deepa Rane", "Vikram Shetty", "Mahesh Kadam", "Amit Joshi"].map((n, i) => ({
-        name: n, ini: this.ini(n), av: this.av(i),
+        name: n, ini: this.ini(n), av: this.av(i), ...this.pic(n),
         dot: this.presenceColor(["online", "online", "meeting", "away", "remote"][i]),
         status: ["Available · HO", "Available · HO", "In a meeting", "Away · Panoli", "Working remotely"][i],
         ownerDisplay: i === 1 ? "inline" : "none"
@@ -5715,7 +5980,7 @@ class Component extends DCLogic {
       })),
       searchResults: searchResults.map((r, i) => ({
         ...r,
-        bg: this.av(i),
+        bg: this.av(i), ...this.pic(r.whoName || r.who),
         tagDisplay: r.tag ? "inline-flex" : "none",
         click: () => this.setState({ activeChat: r.cid, chatOpened: true, chSearchOpen: false })
       })),
@@ -5740,6 +6005,7 @@ class Component extends DCLogic {
 
     return {
       ...h,
+      ...this.deptLogo(h.id),
       icon: x.icon,
       location: x.location,
       activity: x.activity,
@@ -5832,12 +6098,12 @@ class Component extends DCLogic {
       })),
       tools: (h.tools || []).map(t => ({ ...t, note: "Single sign-on · owned by " + h.owner, click: () => this.flash("Opening " + t.t + " via single sign-on") })),
       team: x.team.map((t, i) => ({
-        ...t, ini: this.ini(t.name), av: this.av(i),
+        ...t, ini: this.ini(t.name), av: this.av(i), ...this.pic(t.name),
         click: () => { this.setState({ view: "chat" }); this.flash("Conversation opened with " + t.name); },
         mail: () => this.flash("Drafting an email to " + t.name.split(" ")[0].toLowerCase() + "@gharda.co.in")
       })),
       topTeam: x.team.slice(0, 3).map((t, i) => ({
-        ...t, ini: this.ini(t.name), av: this.av(i),
+        ...t, ini: this.ini(t.name), av: this.av(i), ...this.pic(t.name),
         click: () => { this.setState({ view: "chat" }); this.flash("Conversation opened with " + t.name); }
       })),
 
@@ -5942,13 +6208,19 @@ class Component extends DCLogic {
   paletteResults() {
     const s = this.state, q = s.paletteQ.trim().toLowerCase();
     const out = [];
-    const push = (label, sub, kind, mono, chipBg, chipFg, click) => out.push({ label, sub, kind, mono, chipBg, chipFg, click });
+    const push = (label, sub, kind, mono, chipBg, chipFg, click, deptId) => out.push(Object.assign(
+      this.deptLogo(kind === "Hub" ? deptId : null),
+      { label, sub, kind, mono, chipBg, chipFg, click,
+        picDisplay: kind === "Person" ? "block" : "none",
+        monoDisplay: kind === "Person" ? "none" : "flex" },
+      kind === "Person" ? this.pic(label) : {}
+    ));
     [["Home", "home", "HM"], ["Announcements", "ann", "AN"], ["Documents", "res", "DC"], ["Leader's Desk", "leader", "LD"],
      ["Employee Connect", "connect", "EC"], ["Gharda Unplugged", "feed", "GU"], ["Gharda Cares", "cares", "GC"],
      ["Knowledge Centre", "know", "KC"], ["Conversations", "chat", "CH"], ["Quick links", "links", "QL"]].forEach(v => {
       push(v[0], "Section", "Go to", v[2], "#EEF1FE", "#2A46C8", this.go(v[1]));
     });
-    HUBS.forEach(h => push(h.name, h.owner, "Hub", h.mono, h.panel, h.chip, this.goHubTo(h.id)));
+    HUBS.forEach(h => push(h.name, h.owner, "Hub", h.mono, h.panel, h.chip, this.goHubTo(h.id), h.id));
     s.resources.slice(0, 8).forEach(d => push(d.name, d.cat + " · " + d.type, "Document", d.type.slice(0, 3), "#F1F3F8", "#47506A", () => { this.setState({ view: "res", paletteOpen: false }); this.flash("Opening " + d.name); }));
     s.users.slice(0, 6).forEach(u => push(u.name, u.dept + " · " + u.loc, "Person", this.ini(u.name), "#E7ECFD", "#152A63", () => { this.setState({ view: "chat", paletteOpen: false }); this.flash("Starting a chat with " + u.name); }));
     const filtered = q ? out.filter(r => (r.label + " " + r.sub).toLowerCase().indexOf(q) > -1) : out.slice(0, 8);
@@ -5969,6 +6241,12 @@ class Component extends DCLogic {
       .map((c, i) => ({ c, i }))
       .filter(({ c }) => !cq || (c.title + " " + c.desc + " " + (c.meta || "")).toLowerCase().indexOf(cq) > -1);
     const connectShown = Math.max(CONNECT_PAGE, s.connectShown || CONNECT_PAGE);
+    const kq = (s.knowQ || "").trim().toLowerCase();
+    const knowMatches = s.knowledge.filter(k => !kq ||
+      (k.title + " " + k.author + " " + k.type + " " + (k.tags || []).join(" ")).toLowerCase().indexOf(kq) > -1);
+    const knowShown = Math.max(KNOW_PAGE, s.knowShown || KNOW_PAGE);
+    const caresMatches = s.cares;
+    const caresShown = Math.max(CARES_PAGE, s.caresShown || CARES_PAGE);
 
     return {
       // shell
@@ -6026,7 +6304,7 @@ class Component extends DCLogic {
       ].map(g => ({
         label: g.label,
         items: g.items.map(it => ({
-          label: it[0], mono: it[2],
+          label: it[0], mono: it[2], ...this.deptLogo(null),
           chipBg: s.view === it[1] ? "#D9E0FC" : "#F1F3F8",
           chipFg: s.view === it[1] ? "#2A46C8" : "#646E88",
           bg: s.view === it[1] ? "#EEF1FE" : "transparent",
@@ -6070,8 +6348,11 @@ class Component extends DCLogic {
       toast: s.toast,
 
       // layout
+      ...this.pic(ME, "mePic"),
+      ...this.pic("Dr. Keki H. Gharda", "leaderPic"),
       gutter: mobile ? "18px" : "32px",
       bandOuterPad: mobile ? "16px 12px 0" : narrow ? "20px 16px 0" : "24px 6px 0",
+      homeLinksPad: mobile ? "28px 12px 34px" : "38px 6px 44px",
 
       // global footer (slim bar at the end of every screen)
       footerPad: mobile ? "14px 18px" : "16px 32px",
@@ -6123,7 +6404,7 @@ class Component extends DCLogic {
         pinDisplay: a.pinned ? "inline-flex" : "none"
       })),
       // enough cards to overflow the column, so the arrows have somewhere to go
-      feedPreview: s.feed.slice(0, 6).map(p => Object.assign(this.decorate("feed", p), { initials: this.ini(p.author) })),
+      feedPreview: s.feed.slice(0, 6).map(p => Object.assign(this.decorate("feed", p), { initials: this.ini(p.author) }, this.pic(p.author))),
       feedScrollRef: this.feedScrollRef,
       feedCardWidth: mobile ? "84%" : "300px",
       feedScrollPrev: () => this.scrollFeed(-1),
@@ -6132,7 +6413,7 @@ class Component extends DCLogic {
         { name: "Sneha Pardeshi", note: "Birthday · QA, Lote plant", bg: "#8A5316", ring: "rgba(138,83,22,0.12)" },
         { name: "Amit Joshi", note: "12 years · Process R&D, HO", bg: "#2A46C8", ring: "rgba(42,70,200,0.12)" },
         { name: "Mahesh Kadam", note: "5 years · Maintenance, Panoli", bg: "#0A6B52", ring: "rgba(10,107,82,0.12)" }
-      ].map(c => ({ ...c, ini: this.ini(c.name), wish: () => this.flash("Wish posted to " + c.name.split(" ")[0] + "'s profile") })),
+      ].map(c => ({ ...c, ini: this.ini(c.name), ...this.pic(c.name), wish: () => this.flash("Wish posted to " + c.name.split(" ")[0] + "'s profile") })),
       kudos: s.kudos,
       openKudos: () => this.flash("Kudos composer — pick a colleague to appreciate"),
       scrollToHubs: () => { const el = this.scroller(); if (el) el.scrollTop = el.scrollHeight; },
@@ -6150,6 +6431,7 @@ class Component extends DCLogic {
         { tag: "नियामक", time: "काल", title: "रासायनिक क्लस्टरसाठी एमपीसीबीचे सुधारित सांडपाणी निकष", src: "द हिंदू बिझनेसलाइन", chipBg: "#FBF3E8", chipFg: "#8A5316", icon: "M6.5 3.5h7l4.5 4.5v12h-11.5Z M13.5 3.5V8H18" }
       ].map(n => ({ ...n, click: this.go("ann") })),
       hubCards: HUBS.map(h => ({
+        ...this.deptLogo(h.id),
         mono: h.mono, name: h.name, owner: h.owner, tagline: h.tagline, accent: h.accent, panel: h.panel, updated: h.updated.replace("Updated ", "updated "),
         wash: "linear-gradient(180deg," + h.panel + ",rgba(255,255,255,0))",
         followLabel: s.following[h.id] ? "Following" : "Follow",
@@ -6184,7 +6466,7 @@ class Component extends DCLogic {
       homeVidOrder: narrow ? "0" : "2",
       homeLeaderTitleSize: mobile ? "21px" : narrow ? "24px" : "28px",
       homeYtRef: this.homeYtRef,
-      hero: heroSlide,
+      hero: Object.assign({}, heroSlide, (heroSlide.org ? this.orgPic(heroSlide.author) : this.pic(heroSlide.author))),
       heroPrev: () => this.stepHero(-1),
       heroNext: () => this.stepHero(1),
       heroDots: HOME_HERO_SLIDES.map((sl, i) => ({
@@ -6238,28 +6520,28 @@ class Component extends DCLogic {
       com: this.buildCom(isAdmin, narrow),
 
       // knowledge centre
-      knowFilters: ["All", "PDF", "Article", "Video", "PPT"].map(n => ({
-        name: n,
-        bg: s.knowType === n ? "#fff" : "transparent",
-        fg: s.knowType === n ? "#0D1220" : "#47506A",
-        shadow: s.knowType === n ? "0 1px 2px rgba(13,18,32,0.12)" : "none",
-        click: () => this.setState({ knowType: n })
-      })),
-      knowCount: s.knowledge.filter(k => s.knowType === "All" || k.type === s.knowType).length + " posts",
-      knowList: s.knowledge.filter(k => {
-        const tOk = s.knowType === "All" || k.type === s.knowType;
-        const qOk = true;
-        return tOk && qOk;
-      }).map(k => {
+      knowQ: s.knowQ || "",
+      onKnowQ: e => this.setState({ knowQ: e.target.value, knowShown: KNOW_PAGE }),
+      clearKnowQ: () => this.setState({ knowQ: "", knowShown: KNOW_PAGE }),
+      knowClearDisplay: (s.knowQ || "").trim() ? "flex" : "none",
+      knowEmpty: knowMatches.length === 0,
+      knowCount: knowMatches.length + (kq ? " of " + s.knowledge.length + " posts" : " posts"),
+      knowHasMore: knowMatches.length > knowShown,
+      knowMoreLabel: "Load more posts (" + Math.max(0, knowMatches.length - knowShown) + " left)",
+      knowEndDisplay: knowMatches.length > 0 && knowMatches.length <= knowShown ? "block" : "none",
+      loadMoreKnow: () => this.setState(p => ({ knowShown: (p.knowShown || KNOW_PAGE) + KNOW_PAGE })),
+      knowList: knowMatches.slice(0, knowShown).map(k => {
         const t = TYPEC[k.type] || ["#F1F3F8", "#47506A"];
         const d = this.decorate("knowledge", k, { tagList: k.tags.map(x => ({ t: "#" + x })), typeBg: t[0], typeFg: t[1] });
         const preview = (k.comments || [])[0];
         return {
           ...d,
+          ...this.pic(k.author),
           commentPreviewDisplay: preview && d.commentsDisplay === "none" ? "flex" : "none",
           previewWho: preview ? preview.who : "",
           previewText: preview ? preview.text : "",
           previewIni: preview ? this.ini(preview.who) : "",
+          ...this.pic(preview ? preview.who : "", "previewPic"),
           previewAv: this.av(3)
         };
       }),
@@ -6279,12 +6561,12 @@ class Component extends DCLogic {
       connectMoreLabel: "Load more posts (" + Math.max(0, connectMatches.length - connectShown) + " left)",
       connectEndDisplay: connectMatches.length > 0 && connectMatches.length <= connectShown ? "block" : "none",
       loadMoreConnect: () => this.setState(p => ({ connectShown: (p.connectShown || CONNECT_PAGE) + CONNECT_PAGE })),
-      connectAdmins: ["Deepa Rane", "Rahul Kumar", "Nilesh Patil", "Priya Nandgaonkar", "Amit Joshi"].map((n, i) => ({ name: n, ini: this.ini(n), av: this.av(i + 1) })),
+      connectAdmins: ["Deepa Rane", "Rahul Kumar", "Nilesh Patil", "Priya Nandgaonkar", "Amit Joshi"].map((n, i) => ({ name: n, ini: this.ini(n), av: this.av(i + 1), ...this.pic(n) })),
       connectLeaders: [
         { name: "Michelle Rodrigues", pts: "1,024" }, { name: "Scott Fisher", pts: "493" },
         { name: "Emma Bing", pts: "291" }, { name: "Rebecca Anderson", pts: "183" }, { name: "Revanth Rao", pts: "147" }
       ].map((p, i) => ({
-        ...p, rank: String(i + 1).padStart(2, "0"), ini: this.ini(p.name), av: this.av(i),
+        ...p, rank: String(i + 1).padStart(2, "0"), ini: this.ini(p.name), av: this.av(i), ...this.pic(p.name),
         medalBg: i === 0 ? "#FBF3E8" : i === 1 ? "#EEF1FE" : "#F1F3F8",
         medalFg: i === 0 ? "#B7791F" : i === 1 ? "#2A46C8" : "#8A93A8"
       })),
@@ -6319,11 +6601,12 @@ class Component extends DCLogic {
           viewAllDisplay: nComments > 1 && d.commentsDisplay === "none" ? "block" : "none",
           viewAllLabel: "View all " + nComments + " comments",
           author, dept: author + ", Head Office", date: (parts[1] || "").trim(),
-          ini: this.ini(author), av: this.av(i),
+          ini: this.ini(author), av: this.av(i), ...this.orgPic(author),
           commentPreviewDisplay: preview && d.commentsDisplay === "none" ? "flex" : "none",
           previewWho: preview ? preview.who : "",
           previewText: preview ? preview.text : "",
           previewIni: preview ? this.ini(preview.who) : "",
+          ...this.pic(preview ? preview.who : "", "previewPic"),
           previewAv: this.av(i + 2)
         };
       }),
@@ -6333,7 +6616,25 @@ class Component extends DCLogic {
         { value: "38%", label: "less freshwater drawn" },
         { value: "1,200", label: "saplings planted" }
       ],
-      caresList: s.cares.map(c => this.decorate("cares", c)),
+      caresList: caresMatches.slice(0, caresShown).map((c, i) => {
+        // real photo first: assets/cares/<id>.jpg, then .png, then a generated scene
+        const kind = { Environment: "plantation", Education: "training", Health: "awards" }[c.tag] || "training";
+        return Object.assign(this.decorate("cares", c), {
+          img: CARES_PHOTOS_READY ? "assets/cares/" + c.id + ".jpg" : this.photo(kind, i % 3),
+          imgFb: e => {
+            const t = e && e.target;
+            if (!t) return;
+            if (!CARES_PHOTOS_READY) return;
+            const step = t.dataset.step || "0";
+            if (step === "0") { t.dataset.step = "1"; t.src = "assets/cares/" + c.id + ".png"; return; }
+            if (step === "1") { t.dataset.step = "2"; t.src = this.photo(kind, i % 3); }
+          }
+        });
+      }),
+      caresHasMore: caresMatches.length > caresShown,
+      caresMoreLabel: "Load more programmes (" + Math.max(0, caresMatches.length - caresShown) + " left)",
+      caresEndDisplay: caresMatches.length > 0 && caresMatches.length <= caresShown ? "block" : "none",
+      loadMoreCares: () => this.setState(p => ({ caresShown: (p.caresShown || CARES_PAGE) + CARES_PAGE })),
 
       // quick links
       linkGroups: [
@@ -6425,7 +6726,7 @@ class Component extends DCLogic {
         const map = { Active: ["#E6F4F0", "#0A6B52", "#C8E6DD"], Suspended: ["#FBEDEB", "#A32B22", "#F2D6D2"] };
         const c = map[u.status] || ["#FBF3E8", "#8A5316", "#EEDCC4"];
         return {
-          ...u, ini: this.ini(u.name), av: this.av(i),
+          ...u, ini: this.ini(u.name), av: this.av(i), ...this.pic(u.name),
           statusBg: c[0], statusFg: c[1], statusBd: c[2],
           setRole: e => {
             const v = e.target.value;
@@ -6542,6 +6843,7 @@ class Component extends DCLogic {
           const pos = matches.indexOf(h);
           const fav = !!s.favourites[h.id];
           return {
+            ...this.deptLogo(h.id),
             id: h.id, name: h.name, tagline: h.tagline, accent: h.accent,
             icon: x.icon || IC.doc,
             location: x.location || h.owner,
