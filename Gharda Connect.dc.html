@@ -210,36 +210,46 @@
     <main data-scroll-root="true" onScroll="{{ onMainScroll }}" style="flex:1 1 auto;overflow-y:auto;overflow-x:hidden;position:relative;padding-bottom:{{ mainPadBottom }}">
 
     <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-      <div style="max-width:1400px;margin:0 auto;padding:{{ bandOuterPad }}">
+      <div style="max-width:1500px;margin:0 auto;padding:{{ bandOuterPad }}">
         <section style="position:relative;overflow:hidden;border-radius:22px;background:#0D1220;color:#fff;border:1px solid rgba(255,255,255,0.07);box-shadow:0 26px 54px -30px rgba(13,18,32,0.5);background-image:radial-gradient(760px 340px at 12% -30%,rgba(42,70,200,0.5),transparent 62%),radial-gradient(620px 300px at 90% 130%,rgba(10,107,82,0.34),transparent 64%),linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:auto,auto,74px 74px,74px 74px;min-height:{{ bandMinHeight }};display:grid;grid-template-columns:{{ homeLeaderCols }};gap:44px;align-items:center;padding:{{ heroCardPad }}">
           <div style="position:relative;order:{{ homeVidOrder }};aspect-ratio:16/9;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.14);box-shadow:0 32px 64px -28px rgba(0,0,0,0.6);background:linear-gradient(150deg,#1B2237,#0A0E1A);display:flex;align-items:center;justify-content:center">
             <span style="position:absolute;inset:0;background-image:radial-gradient(420px 220px at 25% -20%,rgba(42,70,200,0.45),transparent 62%),linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:auto,34px 34px,34px 34px"></span>
-            <canvas ref="{{ homeVidRef }}" width="640" height="360" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
-            <button onClick="{{ toggleHomeVideo }}" style="position:relative;width:68px;height:68px;border:0;border-radius:99px;background:rgba(255,255,255,0.95);display:{{ homeVidPlayDisplay }};align-items:center;justify-content:center;cursor:pointer;box-shadow:0 20px 40px -14px rgba(0,0,0,0.7)" style-hover="background:var(--surface)">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="#0D1220"><path d="M8 5.5v13l11-6.5Z" /></svg>
-            </button>
-            <button onClick="{{ toggleHomeVideo }}" style="position:absolute;left:14px;bottom:14px;display:{{ homeVidPauseDisplay }};width:34px;height:34px;border:1px solid rgba(255,255,255,0.2);border-radius:99px;background:rgba(9,13,24,0.55);color:#fff;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px)" style-hover="background:rgba(9,13,24,0.75)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5h3v13H8Zm5 0h3v13h-3Z" /></svg>
+            <img src="{{ homeYtThumb }}" alt="" onError="{{ onHomeThumbError }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:{{ homeThumbDisplay }}" />
+            <iframe ref="{{ homeYtRef }}" src="{{ homeYtSrc }}" title="{{ homeYtTitle }}" onLoad="{{ onHomeYtLoad }}" allow="autoplay; encrypted-media; picture-in-picture; web-share; fullscreen" allowFullScreen="true" referrerPolicy="strict-origin-when-cross-origin" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+            <button onClick="{{ toggleHomeMute }}" title="{{ homeMuteLabel }}" style="position:absolute;right:14px;top:14px;display:flex;align-items:center;gap:7px;height:32px;padding:0 12px;border:1px solid rgba(255,255,255,0.2);border-radius:99px;background:rgba(9,13,24,0.55);color:#fff;font-size:11.5px;font-weight:500;cursor:pointer;backdrop-filter:blur(6px)" style-hover="background:rgba(9,13,24,0.75)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4Z" fill="currentColor" /><path d="{{ homeMuteIcon }}" /></svg>
+              <span>{{ homeMuteLabel }}</span>
             </button>
           </div>
           <div style="color:#fff;display:flex;flex-direction:column;justify-content:center">
             <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:9px;height:28px;padding:0 12px;border:1px solid rgba(255,255,255,0.16);background:rgba(255,255,255,0.07);border-radius:99px;font-size:10.5px;font-weight:500;color:#D3DAEA;margin-bottom:12px;backdrop-filter:blur(6px)">
               <span style="width:5px;height:5px;border-radius:99px;background:#39D3A7;box-shadow:0 0 0 3px rgba(57,211,167,0.22)"></span>
-              <span>Leader's Desk · Q1 FY27</span>
+              <span>{{ hero.badge }}</span>
             </div>
-            <h2 style="margin:0 0 11px;font-family:Geist,sans-serif;font-size:{{ homeLeaderTitleSize }};font-weight:600;letter-spacing:-0.03em;line-height:1.16;max-width:26ch">"Our Panoli expansion changes what we can promise customers"</h2>
-            <p style="margin:0 0 18px;font-size:13.5px;line-height:1.58;color:#AEB8CE;max-width:52ch">Dr. Keki Gharda on the Phase 2 capacity ramp, the 500-day safety record and where the company invests through FY27.</p>
+            <h2 style="margin:0 0 11px;font-family:Geist,sans-serif;font-size:{{ homeLeaderTitleSize }};font-weight:600;letter-spacing:-0.03em;line-height:1.16;max-width:26ch">{{ hero.title }}</h2>
+            <p style="margin:0 0 18px;font-size:13.5px;line-height:1.58;color:#AEB8CE;max-width:52ch">{{ hero.blurb }}</p>
             <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;padding-top:14px;border-top:1px solid rgba(255,255,255,0.1)">
-              <span style="width:34px;height:34px;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12px;font-weight:600">KG</span>
+              <span style="width:34px;height:34px;border-radius:99px;background:linear-gradient(140deg,var(--accent),#152A63);display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12px;font-weight:600">{{ hero.initials }}</span>
               <span style="line-height:1.3">
-                <span style="display:block;font-size:12.5px;font-weight:600">Dr. Keki H. Gharda</span>
-                <span style="display:block;font-size:11px;color:#95A0BA">Chairman &amp; Managing Director · 8 min</span>
+                <span style="display:block;font-size:12.5px;font-weight:600">{{ hero.author }}</span>
+                <span style="display:block;font-size:11px;color:#95A0BA">{{ hero.role }} · {{ hero.mins }}</span>
               </span>
               <button onClick="{{ goLeader }}" style="margin-left:auto;display:flex;align-items:center;gap:7px;height:34px;padding:0 13px;border:1px solid rgba(255,255,255,0.2);border-radius:10px;background:rgba(255,255,255,0.06);color:#fff;font-size:12.5px;font-weight:500;cursor:pointer;backdrop-filter:blur(6px)" style-hover="background:rgba(255,255,255,0.2)">
                 <span>All addresses</span>
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h13" /><path d="m12 6.5 5.5 5.5-5.5 5.5" /></svg>
               </button>
             </div>
+          </div>
+          <button onClick="{{ heroPrev }}" aria-label="Previous address" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);z-index:6;width:36px;height:36px;border:1px solid rgba(255,255,255,0.2);border-radius:99px;background:rgba(9,13,24,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px)" style-hover="background:rgba(9,13,24,0.8)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6" /></svg>
+          </button>
+          <button onClick="{{ heroNext }}" aria-label="Next address" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);z-index:6;width:36px;height:36px;border:1px solid rgba(255,255,255,0.2);border-radius:99px;background:rgba(9,13,24,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px)" style-hover="background:rgba(9,13,24,0.8)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m10 6 6 6-6 6" /></svg>
+          </button>
+          <div style="position:absolute;left:0;right:0;bottom:12px;z-index:6;display:flex;align-items:center;justify-content:center;gap:6px">
+            <sc-for list="{{ heroDots }}" as="d" hint-placeholder-count="4">
+              <button onClick="{{ d.go }}" aria-label="{{ d.label }}" style="width:{{ d.w }};height:6px;border:0;border-radius:99px;background:{{ d.bg }};padding:0;cursor:pointer"></button>
+            </sc-for>
           </div>
         </section>
 
@@ -256,6 +266,7 @@
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 6 6 6-6 6" /></svg>
                 </button>
               </div>
+              <div style="max-height:{{ homeAnnMaxH }};overflow-y:auto;overscroll-behavior:contain">
               <sc-for list="{{ homeAnn }}" as="a" hint-placeholder-count="3">
                 <button onClick="{{ goAnn }}" style="display:flex;gap:16px;width:100%;text-align:left;padding:18px 20px;border:0;border-bottom:1px solid var(--divider);background:transparent;cursor:pointer" style-hover="background:var(--subtle)">
                   <span style="width:4px;flex:0 0 auto;border-radius:99px;background:{{ a.railColor }}"></span>
@@ -273,9 +284,10 @@
                   </span>
                 </button>
               </sc-for>
+              </div>
             </section>
 
-            <section>
+            <section style="margin-top:{{ homeAnnSpaceBelow }}">
               <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
                 <div>
                   <div style="font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px">Culture</div>
@@ -283,9 +295,16 @@
                 </div>
                 <button onClick="{{ goFeed }}" style="margin-left:auto;height:32px;padding:0 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text-secondary);font-size:12.5px;font-weight:500;cursor:pointer" style-hover="border-color:#C3CEFA;color:var(--text-primary)">Open feed</button>
               </div>
-              <div style="display:grid;grid-template-columns:{{ pairCols }};gap:14px">
+              <div style="position:relative">
+                <button onClick="{{ feedScrollPrev }}" aria-label="Previous posts" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);z-index:5;width:34px;height:34px;border:1px solid var(--border);border-radius:99px;background:var(--surface);color:var(--text-secondary);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px -8px rgba(13,18,32,0.35)" style-hover="border-color:#C3CEFA;color:var(--text-primary)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6" /></svg>
+                </button>
+                <button onClick="{{ feedScrollNext }}" aria-label="Next posts" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);z-index:5;width:34px;height:34px;border:1px solid var(--border);border-radius:99px;background:var(--surface);color:var(--text-secondary);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px -8px rgba(13,18,32,0.35)" style-hover="border-color:#C3CEFA;color:var(--text-primary)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m10 6 6 6-6 6" /></svg>
+                </button>
+                <div ref="{{ feedScrollRef }}" style="display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 0 6px">
                 <sc-for list="{{ feedPreview }}" as="p" hint-placeholder-count="2">
-                  <article style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 1px 2px rgba(13,18,32,0.05)">
+                  <article style="flex:0 0 {{ feedCardWidth }};scroll-snap-align:start;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 1px 2px rgba(13,18,32,0.05)">
                     <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
                       <span style="width:32px;height:32px;border-radius:99px;background:{{ p.avBg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:11px;font-weight:600">{{ p.initials }}</span>
                       <span style="min-width:0;line-height:1.25">
@@ -306,6 +325,7 @@
                     </div>
                   </article>
                 </sc-for>
+                </div>
               </div>
             </section>
 
@@ -445,6 +465,7 @@
           </div>
         </div>
       </section>
+
     </sc-if>
 
     <sc-if value="{{ isHub }}" hint-placeholder-val="{{ false }}">
@@ -2354,75 +2375,65 @@
 
     <sc-if value="{{ isConnect }}" hint-placeholder-val="{{ false }}">
       <div>
-        <div style="background:var(--surface);border-bottom:1px solid var(--border)">
-          <div style="max-width:1400px;margin:0 auto;padding:26px {{ gutter }} 0">
-            <div style="font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:9px">People &amp; events</div>
-            <h1 style="margin:0;font-family:Geist,sans-serif;font-size:{{ pageTitleSize }};font-weight:600;letter-spacing:-0.032em">Employee Connect</h1>
-            <p style="margin:9px 0 0;font-size:14.5px;line-height:1.6;color:var(--text-secondary);max-width:72ch">HR events, training programmes and annual functions — published by admins, open for comments.</p>
-            <div style="display:flex;align-items:center;padding:18px 0 16px">
-              <span style="font-size:12px;color:var(--text-muted)">{{ connectCount }}</span>
+        <div style="max-width:{{ igMaxWidth }};margin:0 auto;padding:{{ igPad }};display:grid;grid-template-columns:{{ connectCols }};gap:28px;justify-content:center;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:{{ igCardGap }};min-width:0">
+
+            <div style="position:relative">
+              <span style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted);display:flex;pointer-events:none">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
+              </span>
+              <input value="{{ connectQ }}" onChange="{{ onConnectQ }}" placeholder="Search posts, people or departments" style="width:100%;height:40px;padding:0 40px;border:1px solid var(--border);border-radius:10px;background:#F1F3F8;font-size:13.5px;color:var(--text-primary);outline:none" style-focus="border-color:var(--accent);background:var(--surface);box-shadow:0 0 0 4px rgba(42,70,200,0.14)" />
+              <button onClick="{{ clearConnectQ }}" aria-label="Clear search" style="position:absolute;right:9px;top:50%;transform:translateY(-50%);display:{{ connectClearDisplay }};width:24px;height:24px;border:0;border-radius:99px;background:var(--divider);color:var(--text-secondary);align-items:center;justify-content:center;cursor:pointer" style-hover="background:#D9DEE9;color:var(--text-primary)">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
+              </button>
             </div>
-          </div>
-        </div>
 
-        <div style="max-width:1400px;margin:0 auto;padding:{{ sectionPad }} {{ gutter }};display:grid;grid-template-columns:{{ connectCols }};gap:22px;justify-content:center;align-items:start">
-          <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
-            <sc-for list="{{ connectList }}" as="c" hint-placeholder-count="4">
-              <article style="background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 1px 2px rgba(13,18,32,0.05)">
-                <div style="display:flex;align-items:center;gap:12px;padding:16px 18px 14px">
-                  <span style="width:40px;height:40px;flex:0 0 auto;border-radius:13px;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12.5px;font-weight:600">{{ c.ini }}</span>
-                  <span style="min-width:0;flex:1 1 auto">
-                    <span style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-                      <span style="font-size:13.5px;font-weight:600;color:var(--accent)">{{ c.author }}</span>
-                      <span style="font-size:13px;color:var(--text-secondary)">posted an announcement</span>
-                    </span>
-                    <span style="display:flex;align-items:center;gap:7px;margin-top:3px;font-size:11.5px;color:var(--text-muted)">
-                      <span>{{ c.dept }}</span><span>·</span><span>{{ c.date }}</span><span>·</span><span>{{ c.count }}</span>
-                    </span>
+            <sc-for list="{{ connectList }}" as="c" hint-placeholder-count="2">
+              <article style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+                <div style="display:flex;align-items:center;gap:11px;padding:11px 14px">
+                  <span style="width:36px;height:36px;flex:0 0 auto;border-radius:99px;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:12px;font-weight:600">{{ c.ini }}</span>
+                  <span style="min-width:0;flex:1 1 auto;line-height:1.3">
+                    <span style="display:block;font-size:13.5px;font-weight:600;color:var(--text-primary)">{{ c.author }}</span>
+                    <span style="display:block;font-size:11.5px;color:var(--text-muted)">{{ c.dept }} · {{ c.date }}</span>
                   </span>
-                  <button onClick="{{ c.download }}" style="flex:0 0 auto;display:flex;align-items:center;gap:7px;height:32px;padding:0 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text-secondary);font-size:12.5px;font-weight:500;cursor:pointer" style-hover="border-color:#C3CEFA;color:var(--text-primary)">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11" /><path d="m8 11 4 4 4-4" /><path d="M4 19h16" /></svg>
-                    <span>Album</span>
+                  <button onClick="{{ c.download }}" aria-label="Open album" style="flex:0 0 auto;width:30px;height:30px;border:0;border-radius:99px;background:transparent;color:var(--text-muted);display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:var(--hover);color:var(--text-primary)">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6" /><circle cx="12" cy="12" r="1.6" /><circle cx="19" cy="12" r="1.6" /></svg>
                   </button>
                 </div>
 
-                <div style="margin:0 18px 14px;border:1px solid #F0E3C6;border-radius:16px;background:#FBF6EA;overflow:hidden;position:relative">
-                  <span style="position:absolute;top:0;left:0;border-top:34px solid #EBB43C;border-right:34px solid transparent"></span>
-                  <span style="position:absolute;top:6px;left:6px;color:#fff;z-index:1">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h3l4 4V6L7 10H4a1 1 0 0 0-1 1Z" /><path d="M15.5 9a4 4 0 0 1 0 6" /></svg>
-                  </span>
-                  <div style="padding:20px 22px 22px 46px">
-                    <h3 style="margin:0 0 8px;font-family:Geist,sans-serif;font-size:17px;font-weight:600;letter-spacing:-0.022em;line-height:1.3">{{ c.title }}</h3>
-                    <p style="margin:0;font-size:14px;line-height:1.7;color:#3B4256">{{ c.desc }}</p>
-                  </div>
-                </div>
+                <button onClick="{{ c.heroClick }}" style="display:{{ c.albumDisplay }};position:relative;width:100%;aspect-ratio:1/1;border:0;padding:0;background:#E7ECFD;overflow:hidden;cursor:pointer">
+                  <img src="{{ c.heroSrc }}" alt="{{ c.heroAlt }}" style="display:block;width:100%;height:100%;object-fit:cover" />
+                  <span style="display:{{ c.heroMoreDisplay }};position:absolute;right:12px;top:12px;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:99px;background:rgba(13,18,32,0.62);color:#fff;font-size:11.5px;font-weight:600;backdrop-filter:blur(6px)">{{ c.count }}</span>
+                </button>
 
-                <div style="display:{{ c.albumDisplay }};grid-template-columns:2fr 1fr;grid-auto-rows:1fr;gap:2px;height:236px;margin:0 0 2px;background:var(--divider);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);overflow:hidden">
-                  <sc-for list="{{ c.photos }}" as="ph" hint-placeholder-count="3">
-                    <button onClick="{{ ph.click }}" style="position:relative;grid-area:{{ ph.area }};min-width:0;border:0;padding:0;background:#E7ECFD;overflow:hidden;cursor:pointer" style-hover="opacity:0.94">
-                      <img src="{{ ph.src }}" alt="{{ ph.alt }}" style="display:block;width:100%;height:100%;object-fit:cover" />
-                      <span style="display:{{ ph.moreDisplay }};position:absolute;inset:0;background:rgba(13,18,32,0.52);color:#fff;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:19px;font-weight:600;letter-spacing:-0.02em">{{ ph.more }}</span>
-                    </button>
-                  </sc-for>
-                </div>
-
-                <div style="display:flex;align-items:center;gap:8px;padding:13px 16px;flex-wrap:wrap">
-                  <button onClick="{{ c.like }}" style="display:flex;align-items:center;gap:7px;height:32px;padding:0 12px;border:1px solid {{ c.likeBd }};border-radius:99px;background:{{ c.likeBg }};color:{{ c.likeColor }};font-size:12.5px;font-weight:600;cursor:pointer" style-hover="border-color:#C3CEFA">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="{{ c.likeFill }}" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 2.8C19 15.6 12 20 12 20Z" /></svg>
-                    <span>{{ c.likes }}</span>
+                <div style="display:flex;align-items:center;gap:4px;padding:9px 10px 3px">
+                  <button onClick="{{ c.like }}" aria-label="Like" style="width:34px;height:34px;border:0;border-radius:99px;background:transparent;color:{{ c.igLikeColor }};display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:var(--hover)">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="{{ c.igLikeFill }}" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 2.8C19 15.6 12 20 12 20Z" /></svg>
                   </button>
-                  <button onClick="{{ c.toggleComments }}" style="display:flex;align-items:center;gap:7px;height:32px;padding:0 12px;border:1px solid var(--border);border-radius:99px;background:var(--surface);color:var(--text-secondary);font-size:12.5px;font-weight:500;cursor:pointer" style-hover="border-color:#C3CEFA;color:var(--text-primary)">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20.5 11.5c0 4.1-3.8 7.4-8.5 7.4a9.8 9.8 0 0 1-2.7-.4L4.5 20l1.2-3.4a7 7 0 0 1-2.2-5.1C3.5 7.4 7.3 4.1 12 4.1s8.5 3.3 8.5 7.4Z" /></svg>
-                    <span>{{ c.commentCount }}</span>
+                  <button onClick="{{ c.toggleComments }}" aria-label="Comments" style="width:34px;height:34px;border:0;border-radius:99px;background:transparent;color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:var(--hover)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20.5 11.5c0 4.1-3.8 7.4-8.5 7.4a9.8 9.8 0 0 1-2.7-.4L4.5 20l1.2-3.4a7 7 0 0 1-2.2-5.1C3.5 7.4 7.3 4.1 12 4.1s8.5 3.3 8.5 7.4Z" /></svg>
+                  </button>
+                  <button onClick="{{ c.download }}" aria-label="Album" style="width:34px;height:34px;border:0;border-radius:99px;background:transparent;color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:var(--hover)">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11" /><path d="m8 11 4 4 4-4" /><path d="M4 19h16" /></svg>
                   </button>
                 </div>
 
-                <div style="display:{{ c.commentPreviewDisplay }};align-items:center;gap:10px;padding:0 18px 14px">
-                  <span style="width:26px;height:26px;flex:0 0 auto;border-radius:99px;background:{{ c.previewAv }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10px;font-weight:600">{{ c.previewIni }}</span>
-                  <span style="min-width:0;font-size:12.5px;line-height:1.5;color:var(--text-secondary)"><span style="font-weight:600;color:var(--text-primary)">{{ c.previewWho }}</span> {{ c.previewText }}</span>
+                <div style="padding:0 14px 2px;font-size:13.5px;font-weight:600;color:var(--text-primary)">{{ c.likes }} likes</div>
+
+                <div style="padding:5px 14px 0;font-size:13.5px;line-height:1.55;color:#29303F">
+                  <span style="font-weight:600;color:var(--text-primary)">{{ c.author }}</span>
+                  <span> {{ c.title }} — {{ c.desc }}</span>
                 </div>
 
-                <div style="display:{{ c.commentsDisplay }};flex-direction:column;gap:12px;padding:15px 18px;border-top:1px solid var(--divider);background:var(--subtle)">
+                <button onClick="{{ c.toggleComments }}" style="display:{{ c.viewAllDisplay }};padding:8px 14px 0;border:0;background:transparent;font-size:13px;color:var(--text-muted);cursor:pointer;text-align:left" style-hover="color:var(--text-secondary)">{{ c.viewAllLabel }}</button>
+
+                <div style="display:{{ c.commentPreviewDisplay }};align-items:center;gap:8px;padding:7px 14px 0">
+                  <span style="min-width:0;font-size:13px;line-height:1.5;color:var(--text-secondary)"><span style="font-weight:600;color:var(--text-primary)">{{ c.previewWho }}</span> {{ c.previewText }}</span>
+                </div>
+
+                <div style="padding:10px 14px 12px;font-size:11px;color:#8A93A8">{{ c.date }}</div>
+
+                <div style="display:{{ c.commentsDisplay }};flex-direction:column;gap:12px;padding:13px 14px;border-top:1px solid var(--divider)">
                   <sc-for list="{{ c.comments }}" as="m" hint-placeholder-count="1">
                     <div style="display:flex;gap:10px">
                       <span style="width:28px;height:28px;flex:0 0 auto;border-radius:99px;background:{{ m.av }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;font-size:10.5px;font-weight:600">{{ m.ini }}</span>
@@ -2442,6 +2453,23 @@
                 </div>
               </article>
             </sc-for>
+
+            <sc-if value="{{ connectEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:36px 22px;text-align:center">
+                <div style="font-family:Geist,sans-serif;font-size:15px;font-weight:600;letter-spacing:-0.015em;margin-bottom:6px">No posts match “{{ connectQ }}”</div>
+                <p style="margin:0 0 16px;font-size:13px;line-height:1.55;color:var(--text-muted)">Try a different name, department or event.</p>
+                <button onClick="{{ clearConnectQ }}" style="height:34px;padding:0 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text-secondary);font-size:12.5px;font-weight:500;cursor:pointer" style-hover="border-color:#C3CEFA;color:var(--text-primary)">Clear search</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ connectHasMore }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ loadMoreConnect }}" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:42px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text-secondary);font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:#C3CEFA;color:var(--text-primary)">
+                <span>{{ connectMoreLabel }}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5v13" /><path d="m6.5 13 5.5 5.5 5.5-5.5" /></svg>
+              </button>
+            </sc-if>
+
+            <div style="display:{{ connectEndDisplay }};padding:4px 0 2px;text-align:center;font-size:12px;color:var(--text-muted)">You're all caught up</div>
           </div>
 
           <div style="display:{{ connectRailDisplay }};flex-direction:column;gap:16px;min-width:0;position:sticky;top:{{ stickyTop }};align-self:start;max-height:{{ stickyMaxH }};overflow-y:auto;overscroll-behavior:contain">
@@ -3323,6 +3351,12 @@
       </div>
     </sc-if>
 
+    <footer style="background:#FBFCFE;border-top:1px solid var(--border)">
+      <div style="max-width:1500px;margin:0 auto;padding:{{ footerPad }};display:flex;align-items:center;justify-content:center;text-align:center">
+        <span style="font-size:11.5px;color:#646E88">© {{ footerYear }} Gharda Chemicals Limited · Internal use only</span>
+      </div>
+    </footer>
+
   </main>
 
   </div>
@@ -4083,17 +4117,109 @@ function drawClip(cv, clip, t) {
   x.fillText(clip.sub, W * 0.062, H * 0.855);
 }
 
+// Home hero video. HOME_YT_ID is the id from a youtube.com/watch?v=<id> URL.
+const HOME_YT_ID = "7zC8TySKlss";
+const HOME_YT_TITLE = "The scientist Dr. Keki Gharda (Gharda Chemicals)";
+// enablejsapi needs a matching origin when served over http(s); file:// has none
+const YT_ORIGIN = typeof window !== "undefined" && window.location && /^https?:$/.test(window.location.protocol)
+  ? "&origin=" + encodeURIComponent(window.location.origin)
+  : "";
+function ytEmbedSrc(id) {
+  return "https://www.youtube-nocookie.com/embed/" + id
+    + "?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1&vq=hd1080"
+    + YT_ORIGIN;
+}
+
+// Employee Connect: posts revealed per "Load more" press.
+const CONNECT_PAGE = 2;
+
+// Home hero carousel. One slide per video; ytId is the id from its YouTube URL.
+const HOME_HERO_SLIDES = [
+  {
+    badge: "Leader's Desk · Q1 FY27",
+    title: "“Our Panoli expansion changes what we can promise customers”",
+    blurb: "Dr. Keki Gharda on the Phase 2 capacity ramp, the 500-day safety record and where the company invests through FY27.",
+    author: "Dr. Keki H. Gharda", initials: "KG",
+    role: "Chairman & Managing Director", mins: "8 min",
+    ytId: HOME_YT_ID, ytTitle: HOME_YT_TITLE
+  },
+  {
+    badge: "Live · Indore 2025",
+    title: "Gharda Chemicals live from Indore, 2025",
+    blurb: "The full recording of the company's 2025 Indore event.",
+    author: "Corporate Communications", initials: "CC",
+    role: "Company event", mins: "Live recording",
+    ytId: "DtTY6fSg5-o", ytTitle: "LIVE - Gharda Chemicals Limited | 2025 | Indore"
+  },
+  {
+    badge: "Campus · Gharda Institute of Technology",
+    title: "Campus tour: Gharda Institute of Technology",
+    blurb: "A walk through the Lavel campus — the teaching blocks, laboratories and student facilities.",
+    author: "Gharda Institute of Technology", initials: "GI",
+    role: "Education trust", mins: "Campus tour",
+    ytId: "_9L5bpzHVR8", ytTitle: "Campus Tour | Gharda Institute of Technology"
+  },
+  {
+    badge: "Company film · 2016",
+    title: "Gharda Chemicals: the company film",
+    blurb: "The corporate film covering the plants, the product range and the research programme. Narrated in Gujarati.",
+    author: "Gharda Chemicals Limited", initials: "GC",
+    role: "Corporate film", mins: "Gujarati",
+    ytId: "6CT3Ft-kYww", ytTitle: "Gharda Chemicals Ltd (Gujarati, 2016)"
+  }
+];
+
 class Component extends DCLogic {
   leaderRef = React.createRef();
-  homeVidRef = React.createRef();
+  homeYtRef = React.createRef();
+  feedScrollRef = React.createRef();
+
+  scrollFeed(dir) {
+    const el = this.feedScrollRef.current;
+    if (!el) return;
+    // one "page" of cards, clamped so narrow columns still advance sensibly
+    const step = Math.max(240, Math.round(el.clientWidth * 0.85));
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  }
   clipT = { home: 0, leader: 0 };
 
   clipFor(which) {
     return CLIPS[which === "home" ? 0 : (this.state.leaderClip || 0)];
   }
+  // Drives the embed through the YouTube iframe API's postMessage channel
+  // (enablejsapi=1), so no external player script is needed.
+  ytCommand(func, args) {
+    const f = this.homeYtRef.current;
+    if (!f || !f.contentWindow) return;
+    try {
+      f.contentWindow.postMessage(
+        JSON.stringify({ event: "command", func, args: args || [] }),
+        "*"
+      );
+    } catch (e) { /* cross-origin frame not ready yet */ }
+  }
+  onHomeYtLoad() {
+    // quality is a request, not a guarantee — YouTube overrides it on slow links
+    [0, 400, 1200].forEach(ms => setTimeout(() => this.ytCommand("setPlaybackQuality", ["hd1080"]), ms));
+  }
+  stepHero(dir) {
+    const n = HOME_HERO_SLIDES.length;
+    const next = ((this.state.heroSlide || 0) + dir + n) % n;
+    // new slide -> new iframe src -> autoplay restarts, so reset the mute pill
+    this.setState({ heroSlide: next, homeVidMuted: true });
+  }
+  toggleHomeMute() {
+    const muted = !this.state.homeVidMuted;
+    this.setState({ homeVidMuted: muted });
+    if (muted) {
+      this.ytCommand("mute");
+    } else {
+      this.ytCommand("unMute");
+      this.ytCommand("setVolume", [100]);
+    }
+  }
   paintClip(which) {
-    const cv = which === "home" ? this.homeVidRef.current : this.leaderRef.current;
-    drawClip(cv, this.clipFor(which), this.clipT[which]);
+    drawClip(this.leaderRef.current, this.clipFor(which), this.clipT[which]);
   }
   tick(which) {
     const last = which === "home" ? "_lastH" : "_lastL";
@@ -4148,6 +4274,8 @@ class Component extends DCLogic {
     approvalTab: "Pending", userQ: "", userModal: false,
     newUser: { code: "", name: "", loc: "HO Mumbai", role: "Employee" },
     reqModal: null, reqText: "", range: "Week", leaderPlaying: false,
+    homeVidMuted: true, homeThumbFailed: false, heroSlide: 0,
+    connectQ: "", connectShown: CONNECT_PAGE,
     announcements: [
       { id: 1, type: "maintenance", priority: "Critical", cat: "IT", title: "SAP S/4 HANA downtime: Saturday 2 August, 22:00–02:00", summary: "Quarterly patching window. Purchase requisitions and goods receipts will be unavailable; Ariba queues submissions and syncs after.", body: "Quarterly patching for SAP S/4 HANA runs Saturday 2 August from 22:00 to 02:00 IST. During the window, purchase requisitions, goods receipts and material postings are unavailable. SAP Ariba will accept submissions and sync them automatically once the window closes. Plan plant indents before 20:00 on Saturday. The IT service desk is staffed through the window on extension 2000.", publisher: "IT Infrastructure", dept: "IT", audience: "All employees", loc: "All locations", date: "26 Jul", published: "26 Jul 2026, 09:10", expiry: "3 Aug 2026", attachments: 1, readMins: 2, read: false, ack: false, acked: false, saved: false, pinned: false, window: "22:00 – 02:00 IST", views: 2140, ackPct: 0, versions: 2 },
       { id: 2, type: "policy", priority: "High", cat: "Finance", title: "Form 16 for FY 2025–26 is now available on Spine HR", summary: "Download it from the Payroll tab. Single sign-on is enabled, so no separate login is needed. Corrections must reach Finance before 14 August.", body: "Form 16 for FY 2025–26 is published in Spine HR under Payroll. Single sign-on is enabled, so no separate login is required. If you find a discrepancy, raise a ticket with Finance before 14 August attaching the supporting proof — corrections after the cutoff require a revised return and take considerably longer.", publisher: "Corporate Communications", dept: "Finance", audience: "All employees", loc: "All locations", date: "2h ago", published: "30 Jul 2026, 08:40", expiry: "14 Aug 2026", attachments: 2, readMins: 3, read: false, ack: true, acked: false, saved: true, pinned: true, views: 1862, ackPct: 41, versions: 1 },
@@ -4290,7 +4418,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.loadAppearance();
-    [120, 600, 1500].forEach(ms => setTimeout(() => { this.paintClip("home"); this.paintClip("leader"); this.measureResHead(); }, ms));
+    [120, 600, 1500].forEach(ms => setTimeout(() => { this.paintClip("leader"); this.measureResHead(); }, ms));
     this._onResize = () => { this.setState({ w: window.innerWidth }); this.measureResHead(); };
     window.addEventListener("resize", this._onResize);
     if (window.ResizeObserver) {
@@ -4711,7 +4839,6 @@ class Component extends DCLogic {
       }))
     };
     const rest = [
-      row("Leader's Desk", "leader", I.leader, ["#E3E0F7", "#4A3E9E"]),
       row("Employee Connect", "connect", I.connect, ["#DDE6FB", "#2A46C8"]),
       row("Gharda Unplugged", "feed", I.feed, ["#F7DEE8", "#B03A6E"]),
       row("Gharda Cares", "cares", I.cares, ["#CDEBE0", "#0A6B52"]),
@@ -5835,6 +5962,13 @@ class Component extends DCLogic {
     const isAdmin = s.role !== "Employee";
     const active = s.chats.find(c => c.id === s.activeChat) || s.chats[0];
     const pal = this.paletteResults();
+    const heroIdx = Math.min(s.heroSlide || 0, HOME_HERO_SLIDES.length - 1);
+    const heroSlide = HOME_HERO_SLIDES[heroIdx];
+    const cq = (s.connectQ || "").trim().toLowerCase();
+    const connectMatches = s.connect
+      .map((c, i) => ({ c, i }))
+      .filter(({ c }) => !cq || (c.title + " " + c.desc + " " + (c.meta || "")).toLowerCase().indexOf(cq) > -1);
+    const connectShown = Math.max(CONNECT_PAGE, s.connectShown || CONNECT_PAGE);
 
     return {
       // shell
@@ -5937,7 +6071,11 @@ class Component extends DCLogic {
 
       // layout
       gutter: mobile ? "18px" : "32px",
-      bandOuterPad: mobile ? "16px 16px 0" : narrow ? "20px 24px 0" : "24px 32px 0",
+      bandOuterPad: mobile ? "16px 12px 0" : narrow ? "20px 16px 0" : "24px 6px 0",
+
+      // global footer (slim bar at the end of every screen)
+      footerPad: mobile ? "14px 18px" : "16px 32px",
+      footerYear: String(new Date().getFullYear()),
       heroCardPad: mobile ? "20px 18px" : narrow ? "22px 26px" : "26px 34px",
       bandMinHeight: mobile ? "0" : "290px",
       heroPad: mobile ? "34px 18px 74px" : "58px 32px 84px",
@@ -5971,7 +6109,10 @@ class Component extends DCLogic {
       goUsers: this.go("users"), goAnalytics: this.go("analytics"),
 
       // home
-      homeAnn: s.announcements.slice(0, 3).map(a => ({
+      // more rows than fit the capped height, so the list actually scrolls
+      homeAnnMaxH: mobile ? "360px" : "430px",
+      homeAnnSpaceBelow: mobile ? "8px" : "16px",
+      homeAnn: s.announcements.slice(0, 8).map(a => ({
         ...a,
         excerpt: a.body.length > 132 ? a.body.slice(0, 132).trim() + "…" : a.body,
         author: a.publisher,
@@ -5981,7 +6122,12 @@ class Component extends DCLogic {
         railColor: a.pinned ? "#2A46C8" : "#E4E8F0",
         pinDisplay: a.pinned ? "inline-flex" : "none"
       })),
-      feedPreview: s.feed.slice(0, 2).map(p => Object.assign(this.decorate("feed", p), { initials: this.ini(p.author) })),
+      // enough cards to overflow the column, so the arrows have somewhere to go
+      feedPreview: s.feed.slice(0, 6).map(p => Object.assign(this.decorate("feed", p), { initials: this.ini(p.author) })),
+      feedScrollRef: this.feedScrollRef,
+      feedCardWidth: mobile ? "84%" : "300px",
+      feedScrollPrev: () => this.scrollFeed(-1),
+      feedScrollNext: () => this.scrollFeed(1),
       celebrations: [
         { name: "Sneha Pardeshi", note: "Birthday · QA, Lote plant", bg: "#8A5316", ring: "rgba(138,83,22,0.12)" },
         { name: "Amit Joshi", note: "12 years · Process R&D, HO", bg: "#2A46C8", ring: "rgba(42,70,200,0.12)" },
@@ -6037,10 +6183,37 @@ class Component extends DCLogic {
       homeLeaderCols: narrow ? "1fr" : "minmax(0,1fr) minmax(0,520px)",
       homeVidOrder: narrow ? "0" : "2",
       homeLeaderTitleSize: mobile ? "21px" : narrow ? "24px" : "28px",
-      homeVidRef: this.homeVidRef,
-      homeVidPlayDisplay: s.homeVidPlaying ? "none" : "flex",
-      homeVidPauseDisplay: s.homeVidPlaying ? "flex" : "none",
-      toggleHomeVideo: () => { if (this.state.homeVidPlaying) this.stopClip("home"); else this.startClip("home"); },
+      homeYtRef: this.homeYtRef,
+      hero: heroSlide,
+      heroPrev: () => this.stepHero(-1),
+      heroNext: () => this.stepHero(1),
+      heroDots: HOME_HERO_SLIDES.map((sl, i) => ({
+        label: sl.badge,
+        w: i === heroIdx ? "18px" : "6px",
+        bg: i === heroIdx ? "#fff" : "rgba(255,255,255,0.32)",
+        go: () => this.setState({ heroSlide: i, homeVidMuted: true })
+      })),
+      // muted is required — browsers block autoplay with sound
+      homeYtSrc: ytEmbedSrc(heroSlide.ytId),
+      homeYtThumb: "https://i.ytimg.com/vi/" + heroSlide.ytId + "/maxresdefault.jpg",
+      homeYtTitle: heroSlide.ytTitle,
+      onHomeYtLoad: () => this.onHomeYtLoad(),
+      toggleHomeMute: () => this.toggleHomeMute(),
+      homeMuteLabel: s.homeVidMuted ? "Unmute" : "Mute",
+      homeMuteIcon: s.homeVidMuted
+        ? "M15.5 9.5 21 15m0-5.5L15.5 15"
+        : "M15.6 8.4a5 5 0 0 1 0 7.2m2.5-9.7a8.5 8.5 0 0 1 0 12.2",
+      // maxres does not exist for every upload — drop to the always-present size
+      homeThumbDisplay: s.homeThumbFailed ? "none" : "block",
+      onHomeThumbError: (e) => {
+        const img = e && e.target;
+        if (img && !img.dataset.fellBack) {
+          img.dataset.fellBack = "1";
+          img.src = "https://i.ytimg.com/vi/" + HOME_YT_ID + "/hqdefault.jpg";
+          return;
+        }
+        this.setState({ homeThumbFailed: true });
+      },
       leaderRef: this.leaderRef,
       toggleLeader: () => { if (this.state.leaderPlaying) this.stopClip("leader"); else this.startClip("leader"); },
       playDisplay: s.leaderPlaying ? "none" : "flex",
@@ -6091,9 +6264,21 @@ class Component extends DCLogic {
         };
       }),
       // connect + cares
-      connectCount: s.connect.length + " posts",
-      connectCols: narrow ? "minmax(0,720px)" : "minmax(0,720px) 320px",
+      // Instagram-style feed: narrow centred column, minimal side padding
+      igMaxWidth: narrow ? "100%" : "1180px",
+      igPad: mobile ? "16px 6px 28px" : "22px 8px 40px",
+      igCardGap: mobile ? "14px" : "18px",
+      connectCols: narrow ? "minmax(0,600px)" : "minmax(0,600px) 320px",
       connectRailDisplay: narrow ? "none" : "flex",
+      connectQ: s.connectQ || "",
+      onConnectQ: e => this.setState({ connectQ: e.target.value, connectShown: CONNECT_PAGE }),
+      clearConnectQ: () => this.setState({ connectQ: "", connectShown: CONNECT_PAGE }),
+      connectClearDisplay: (s.connectQ || "").trim() ? "flex" : "none",
+      connectEmpty: connectMatches.length === 0,
+      connectHasMore: connectMatches.length > connectShown,
+      connectMoreLabel: "Load more posts (" + Math.max(0, connectMatches.length - connectShown) + " left)",
+      connectEndDisplay: connectMatches.length > 0 && connectMatches.length <= connectShown ? "block" : "none",
+      loadMoreConnect: () => this.setState(p => ({ connectShown: (p.connectShown || CONNECT_PAGE) + CONNECT_PAGE })),
       connectAdmins: ["Deepa Rane", "Rahul Kumar", "Nilesh Patil", "Priya Nandgaonkar", "Amit Joshi"].map((n, i) => ({ name: n, ini: this.ini(n), av: this.av(i + 1) })),
       connectLeaders: [
         { name: "Michelle Rodrigues", pts: "1,024" }, { name: "Scott Fisher", pts: "493" },
@@ -6103,7 +6288,7 @@ class Component extends DCLogic {
         medalBg: i === 0 ? "#FBF3E8" : i === 1 ? "#EEF1FE" : "#F1F3F8",
         medalFg: i === 0 ? "#B7791F" : i === 1 ? "#2A46C8" : "#8A93A8"
       })),
-      connectList: s.connect.map((c, i) => {
+      connectList: connectMatches.slice(0, connectShown).map(({ c, i }) => {
         const d = this.decorate("connect", c, {
           download: () => this.flash("Album opening in Documents")
         });
@@ -6120,10 +6305,19 @@ class Component extends DCLogic {
           moreDisplay: v === 2 && total > 3 ? "flex" : "none",
           click: () => this.flash("Opening album — " + c.count)
         }));
+        const nComments = (c.comments || []).length;
         return {
           ...d,
           photos,
-          albumDisplay: photos.length ? "grid" : "none",
+          albumDisplay: photos.length ? "flex" : "none",
+          heroSrc: photos[0] ? photos[0].src : "",
+          heroAlt: photos[0] ? photos[0].alt : "",
+          heroClick: () => this.flash("Opening album — " + c.count),
+          heroMoreDisplay: total > 1 ? "flex" : "none",
+          igLikeColor: c.liked ? "#A32B22" : "var(--text-primary)",
+          igLikeFill: c.liked ? "#A32B22" : "none",
+          viewAllDisplay: nComments > 1 && d.commentsDisplay === "none" ? "block" : "none",
+          viewAllLabel: "View all " + nComments + " comments",
           author, dept: author + ", Head Office", date: (parts[1] || "").trim(),
           ini: this.ini(author), av: this.av(i),
           commentPreviewDisplay: preview && d.commentsDisplay === "none" ? "flex" : "none",
